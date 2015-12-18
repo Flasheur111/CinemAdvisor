@@ -1,0 +1,9 @@
+Pré-requis :
+- npm
+- mongod
+
+Pour lancer l'api :
+- make start
+
+Pour arrêter l'api :
+- make stop

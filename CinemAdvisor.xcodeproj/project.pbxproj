@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */; };
-		0FC0ABD51C20EE6D00BEC47F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD41C20EE6D00BEC47F /* ViewController.swift */; };
+		0FC0ABD51C20EE6D00BEC47F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */; };
 		0FC0ABD81C20EE6D00BEC47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */; };
-		0FC0ABDB1C20EE6D00BEC47F /* CinemAdvisor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD91C20EE6D00BEC47F /* CinemAdvisor.xcdatamodeld */; };
 		0FC0ABDD1C20EE6D00BEC47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABDC1C20EE6D00BEC47F /* Assets.xcassets */; };
 		0FC0ABE01C20EE6D00BEC47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABDE1C20EE6D00BEC47F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,9 +17,8 @@
 /* Begin PBXFileReference section */
 		0FC0ABCF1C20EE6D00BEC47F /* CinemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0FC0ABD41C20EE6D00BEC47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		0FC0ABD71C20EE6D00BEC47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0FC0ABDA1C20EE6D00BEC47F /* CinemAdvisor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CinemAdvisor.xcdatamodel; sourceTree = "<group>"; };
 		0FC0ABDC1C20EE6D00BEC47F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FC0ABDF1C20EE6D00BEC47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FC0ABE11C20EE6D00BEC47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,12 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */,
-				0FC0ABD41C20EE6D00BEC47F /* ViewController.swift */,
+				0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */,
 				0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */,
 				0FC0ABDC1C20EE6D00BEC47F /* Assets.xcassets */,
 				0FC0ABDE1C20EE6D00BEC47F /* LaunchScreen.storyboard */,
 				0FC0ABE11C20EE6D00BEC47F /* Info.plist */,
-				0FC0ABD91C20EE6D00BEC47F /* CinemAdvisor.xcdatamodeld */,
 			);
 			path = CinemAdvisor;
 			sourceTree = "<group>";
@@ -139,8 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FC0ABDB1C20EE6D00BEC47F /* CinemAdvisor.xcdatamodeld in Sources */,
-				0FC0ABD51C20EE6D00BEC47F /* ViewController.swift in Sources */,
+				0FC0ABD51C20EE6D00BEC47F /* SearchController.swift in Sources */,
 				0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,19 +296,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		0FC0ABD91C20EE6D00BEC47F /* CinemAdvisor.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0FC0ABDA1C20EE6D00BEC47F /* CinemAdvisor.xcdatamodel */,
-			);
-			currentVersion = 0FC0ABDA1C20EE6D00BEC47F /* CinemAdvisor.xcdatamodel */;
-			path = CinemAdvisor.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0FC0ABC71C20EE6D00BEC47F /* Project object */;
 }
