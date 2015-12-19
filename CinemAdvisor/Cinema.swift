@@ -9,9 +9,13 @@
 class Cinema {
     let name: String;
     let description: String;
+    var longitude:Double;
+    var latitude:Double;
     
-    init(name: String, description: String){
-        self.name = name;
-        self.description = description;
+    init(name: String, description: String, longitude: Double, latitude: Double){
+        self.name = name
+        self.description = description
+        self.longitude = longitude
+        self.latitude = latitude
     }
 }

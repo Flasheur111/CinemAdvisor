@@ -26,7 +26,11 @@ class DataManager {
             {
                 let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSMutableArray
                 for entry in jsonResult {
-                    let c:Cinema = Cinema(name: entry["enseigne"] as! String, description: entry["ville"] as! String)
+                    let c:Cinema = Cinema(
+                        name: entry["enseigne"] as! String,
+                        description: entry["ville"] as! String,
+                        longitude: entry["lng"] as! Double,
+                        latitude: entry["lat"] as! Double)
                     cinemas.append(c)
                 }
                 cinemas = cinemas.sort { $0.description.compare($1.description) == .OrderedAscending }

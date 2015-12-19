@@ -69,28 +69,6 @@ class SearchController: UITableViewController {
         return cell;
     }
     
-    /*func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.searchDisplayController?.searchResultsTableView {
-            return self.speciesSearchResult.count ?? 0;
-        } else {
-            return self.species.count ?? 0
-        }
-    }*/
-    
-    /*func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as UITableViewCell;
-        
-        var arrayOfSpecies:Array<String>?
-        if tableView == self.searchDisplayController?.searchResultsTableView {
-            arrayOfSpecies = self.speciesSearchResult
-        } else {
-            arrayOfSpecies = self.species
-        }
-        cell.textLabel?.text = "salult"
-        
-        return cell;
-    }*/
-    
     func filterContentForSearchText(searchText: String) {
         if self.species.isEmpty {
             self.speciesSearchResult = [];
