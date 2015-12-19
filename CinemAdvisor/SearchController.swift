@@ -10,8 +10,9 @@ import UIKit
 
 class SearchController: UITableViewController {
     var manager:DataManager = DataManager();
-    var species:Array<Cinema> = [];
-    var speciesSearchResult:Array<Cinema> = [];
+    
+    var cinemaSearchResult:Dictionary<String, Array<Cinema>> = Dictionary<String, Array<Cinema>>();
+    var cinema:Dictionary<String, Array<Cinema>> = Dictionary<String, Array<Cinema>>();
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -24,62 +25,85 @@ class SearchController: UITableViewController {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
-        
     }
     
     func setCinemas(cinemas: Array<Cinema>) -> Void {
-        self.species = cinemas;
-        
+            self.cinema = get_dic(cinemas)
+
         dispatch_async(dispatch_get_main_queue(), {
-           self.tableView.reloadData()
+            self.tableView.reloadData()
         });
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {        if (searchController.active && searchController.searchBar.text != "") {
+            return cinemaSearchResult.keys.count
+        }
+        return cinema.keys.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Paris !"
+        if (searchController.active && searchController.searchBar.text != "") {
+            return self.cinemaSearchResult.keys[self.cinemaSearchResult.startIndex.advancedBy(section)]
+        }
+        return self.cinema.keys[self.cinema.startIndex.advancedBy(section)];
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != "" {
-            return self.speciesSearchResult.count
+        if (searchController.active && searchController.searchBar.text != "") {
+            return self.cinemaSearchResult[self.cinemaSearchResult.startIndex.advancedBy(section)].1.count
         }
-        return species.count;
+        return self.cinema[self.cinema.startIndex.advancedBy(section)].1.count
+    }
+    
+    func get_key_of_index(index:Int) -> String
+    {
+        if (searchController.active && searchController.searchBar.text != "") {
+            return self.cinemaSearchResult.keys[self.cinemaSearchResult.startIndex.advancedBy(index)]
+        }
+        return self.cinema.keys[self.cinema.startIndex.advancedBy(index)]
+    }
+    
+    func get_dic(cinema:Array<Cinema>) -> Dictionary<String, Array<Cinema>>
+    {
+        var mySet : Dictionary<String,Array<Cinema>> = Dictionary<String,Array<Cinema>>()
+        for (_,value) in cinema.sort({ $0.description < $1.description }).enumerate() {
+            if (mySet[value.description] == nil) {
+                mySet[value.description] = []
+            }
+            mySet[value.description]?.append(value)
+        }
+        return mySet
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
+        let section = get_key_of_index(indexPath.section)
         if  searchController.active && searchController.searchBar.text != "" {
-            cell.textLabel!.text = self.speciesSearchResult[indexPath.row].name.lowercaseString
-            cell.detailTextLabel!.text = self.speciesSearchResult[indexPath.row].description.lowercaseString
+            var c:Array<Cinema> = self.cinemaSearchResult[section]!
+            cell.textLabel!.text = c[indexPath.row].name.lowercaseString
+            cell.detailTextLabel!.text = c[indexPath.row].description.lowercaseString
         } else{
-            cell.textLabel!.text = self.species[indexPath.row].name.lowercaseString
-            cell.detailTextLabel!.text = self.species[indexPath.row].description.lowercaseString
+            var c:Array<Cinema> = self.cinema[section]!
+            cell.textLabel!.text = c[indexPath.row].name.lowercaseString
+            cell.detailTextLabel!.text = c[indexPath.row].description.lowercaseString
         }
+        
         return cell;
     }
     
     func filterContentForSearchText(searchText: String) {
-        if self.species.isEmpty {
-            self.speciesSearchResult = [];
-            return;
-        }
-        
-        self.speciesSearchResult = self.species.filter({(aSpecies: Cinema) -> Bool in
-            return aSpecies.name.lowercaseString.rangeOfString(searchText.lowercaseString) != nil ||
+        self.cinemaSearchResult = self.cinema;
+        for (_,key) in self.cinema.keys.enumerate() {
+            self.cinemaSearchResult[key] = self.cinemaSearchResult[key]!.filter({(aSpecies: Cinema) -> Bool in
+                return aSpecies.name.lowercaseString.rangeOfString(searchText.lowercaseString) != nil ||
                     aSpecies.description.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
-        })
-        
+            });
+        }
         tableView.reloadData()
     }
 }

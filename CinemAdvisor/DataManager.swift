@@ -29,11 +29,14 @@ class DataManager {
                     let c:Cinema = Cinema(
                         name: entry["enseigne"] as! String,
                         description: entry["ville"] as! String,
+                        cp:entry["dep"] as! Int,
                         longitude: entry["lng"] as! Double,
                         latitude: entry["lat"] as! Double)
-                    cinemas.append(c)
+                    if (c.description.containsString("PARIS")){
+                        cinemas.append(c)
+                    }
                 }
-                cinemas = cinemas.sort { $0.description.compare($1.description) == .OrderedAscending }
+                cinemas = cinemas.sort { $0.description.compare($1.description) == .OrderedDescending }
                 completion(cinema: cinemas);
             } catch _ {}
         });
