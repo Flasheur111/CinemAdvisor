@@ -9,24 +9,30 @@
 import UIKit
 
 class SearchController: UITableViewController {
-
-    var species:Array<String> = [];
-    var speciesSearchResult:Array<String> = [];
+    var manager:DataManager = DataManager();
+    var species:Array<Cinema> = [];
+    var speciesSearchResult:Array<Cinema> = [];
     
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        species = ["un", "deux", "trois"];
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.manager.GetCinema(setCinemas);
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-
+    }
+    
+    func setCinemas(cinemas: Array<Cinema>) -> Void {
+        self.species = cinemas;
         
+        dispatch_async(dispatch_get_main_queue(), {
+           self.tableView.reloadData()
+        });
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +44,10 @@ class SearchController: UITableViewController {
         return 1
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Paris !"
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.active && searchController.searchBar.text != "" {
             return self.speciesSearchResult.count
@@ -46,12 +56,15 @@ class SearchController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         if  searchController.active && searchController.searchBar.text != "" {
-            cell.textLabel!.text = self.speciesSearchResult[indexPath.row]
+            cell.textLabel!.text = self.speciesSearchResult[indexPath.row].name.lowercaseString
+            cell.detailTextLabel!.text = self.speciesSearchResult[indexPath.row].description.lowercaseString
         } else{
-            cell.textLabel!.text = self.species[indexPath.row]
+            cell.textLabel!.text = self.species[indexPath.row].name.lowercaseString
+            cell.detailTextLabel!.text = self.species[indexPath.row].description.lowercaseString
         }
         return cell;
     }
@@ -79,13 +92,14 @@ class SearchController: UITableViewController {
     }*/
     
     func filterContentForSearchText(searchText: String) {
-        if self.species == [] {
+        if self.species.isEmpty {
             self.speciesSearchResult = [];
             return;
         }
         
-        self.speciesSearchResult = self.species.filter({(aSpecies: String) -> Bool in
-            return aSpecies.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
+        self.speciesSearchResult = self.species.filter({(aSpecies: Cinema) -> Bool in
+            return aSpecies.name.lowercaseString.rangeOfString(searchText.lowercaseString) != nil ||
+                    aSpecies.description.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
         })
         
         tableView.reloadData()
