@@ -4,6 +4,3 @@ Pré-requis :
 
 Pour lancer l'api :
 - make start
-
-Pour arrêter l'api :
-- make stop

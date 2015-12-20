@@ -1,3 +1,10 @@
+CinemAdvisor
+===========
+
 CinemAdvisor permettra de commenter la qualité et l’état des salles de cinéma d'île de France  grâce à système de notation simplifié, afin d’avoir des informations précises et pertinentes.
 
 L’application se destine à un public de passionnés, désireux de visionner des films dans les  meilleures conditions possibles.
+
+Utilisation:
+---------
+Pour utiliser l'application swift, il faut absolument run l'api, voir le README dans api/

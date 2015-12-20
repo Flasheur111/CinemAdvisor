@@ -109,33 +109,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDI-oo-cui">
-                                <rect key="frame" x="170" y="140" width="410" height="30"/>
+                                <rect key="frame" x="163" y="100" width="417" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nom de la salle :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIa-IM-x2X">
-                                <rect key="frame" x="27" y="144" width="135" height="21"/>
+                                <rect key="frame" x="20" y="104" width="135" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uu-NY-6PA">
-                                <rect key="frame" x="268" y="210" width="65" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPE-Sg-mqD">
+                                <rect key="frame" x="20" y="154" width="63" height="30"/>
                                 <state key="normal" title="Ajouter"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="6Uu-NY-6PA" secondAttribute="trailing" constant="257" id="4j0-bt-8LK"/>
-                            <constraint firstItem="6Uu-NY-6PA" firstAttribute="top" secondItem="XDI-oo-cui" secondAttribute="bottom" constant="50" id="EV9-DW-6OT"/>
-                            <constraint firstItem="XDI-oo-cui" firstAttribute="trailing" secondItem="dfO-Pe-DEa" secondAttribute="trailingMargin" id="IPd-Ny-cgQ"/>
-                            <constraint firstItem="XDI-oo-cui" firstAttribute="top" secondItem="JSD-mO-7Am" secondAttribute="bottom" constant="76" id="Ir0-jD-pbE"/>
-                            <constraint firstItem="XDI-oo-cui" firstAttribute="leading" secondItem="YIa-IM-x2X" secondAttribute="trailing" constant="8" id="KfK-J8-pX2"/>
-                            <constraint firstItem="6Uu-NY-6PA" firstAttribute="leading" secondItem="dfO-Pe-DEa" secondAttribute="leadingMargin" constant="257" id="Pgn-04-PuW"/>
-                            <constraint firstItem="XDI-oo-cui" firstAttribute="leading" secondItem="YIa-IM-x2X" secondAttribute="trailing" constant="8" id="ZCd-rt-OLd"/>
-                            <constraint firstItem="YIa-IM-x2X" firstAttribute="leading" secondItem="dfO-Pe-DEa" secondAttribute="leadingMargin" constant="7" id="upg-PO-lvk"/>
-                            <constraint firstItem="YIa-IM-x2X" firstAttribute="top" secondItem="JSD-mO-7Am" secondAttribute="bottom" constant="80" id="xkt-nV-UI1"/>
+                            <constraint firstItem="XDI-oo-cui" firstAttribute="leading" secondItem="YIa-IM-x2X" secondAttribute="trailing" constant="8" id="0F0-gg-dFi"/>
+                            <constraint firstItem="FPE-Sg-mqD" firstAttribute="leading" secondItem="dfO-Pe-DEa" secondAttribute="leadingMargin" id="1QJ-u5-Czp"/>
+                            <constraint firstItem="YIa-IM-x2X" firstAttribute="top" secondItem="JSD-mO-7Am" secondAttribute="bottom" constant="40" id="PIv-13-AnF"/>
+                            <constraint firstItem="FPE-Sg-mqD" firstAttribute="leading" secondItem="dfO-Pe-DEa" secondAttribute="leadingMargin" constant="257" id="c9f-vM-m3Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FPE-Sg-mqD" secondAttribute="trailing" constant="257" id="eur-zg-xms"/>
+                            <constraint firstItem="XDI-oo-cui" firstAttribute="top" secondItem="JSD-mO-7Am" secondAttribute="bottom" constant="36" id="eyw-dr-qIn"/>
+                            <constraint firstItem="YIa-IM-x2X" firstAttribute="leading" secondItem="dfO-Pe-DEa" secondAttribute="leadingMargin" id="ile-9e-CrY"/>
+                            <constraint firstItem="XDI-oo-cui" firstAttribute="trailing" secondItem="dfO-Pe-DEa" secondAttribute="trailingMargin" id="jIt-74-rqO"/>
+                            <constraint firstItem="FPE-Sg-mqD" firstAttribute="top" secondItem="YIa-IM-x2X" secondAttribute="bottom" constant="29" id="l48-cW-98n"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="c9f-vM-m3Y"/>
+                                <exclude reference="eur-zg-xms"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter une salle" id="Vcx-v9-kKZ"/>
                 </viewController>
