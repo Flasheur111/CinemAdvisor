@@ -31,7 +31,8 @@ class DataManager {
                         description: entry["ville"] as! String,
                         cp:entry["dep"] as! Int,
                         longitude: entry["lng"] as! Double,
-                        latitude: entry["lat"] as! Double)
+                        latitude: entry["lat"] as! Double,
+                        adresse: entry["adr"] as! String)
                     if (c.description.containsString("PARIS")){
                         cinemas.append(c)
                     }

@@ -12,12 +12,14 @@ class Cinema {
     var cp:Int;
     var longitude:Double;
     var latitude:Double;
+    var adresse: String;
     
-    init(name: String, description: String, cp:Int, longitude: Double, latitude: Double){
+    init(name: String, description: String, cp:Int, longitude: Double, latitude: Double, adresse: String){
         self.name = name
         self.description = description
         self.longitude = longitude
         self.latitude = latitude
         self.cp = cp;
+        self.adresse = adresse;
     }
 }

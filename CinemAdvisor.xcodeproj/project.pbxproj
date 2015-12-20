@@ -10,6 +10,7 @@
 		0F2E88C61C244B3700A8F059 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2E88C51C244B3700A8F059 /* DataManager.swift */; };
 		0F2E88C81C244C5600A8F059 /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2E88C71C244C5600A8F059 /* Cinema.swift */; };
 		0F2E88CE1C258D1900A8F059 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2E88CD1C258D1900A8F059 /* MapController.swift */; };
+		0FB7C7031C26345700B453CF /* RoomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7C7021C26345700B453CF /* RoomsController.swift */; };
 		0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */; };
 		0FC0ABD51C20EE6D00BEC47F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */; };
 		0FC0ABD81C20EE6D00BEC47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		0F2E88C51C244B3700A8F059 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0F2E88C71C244C5600A8F059 /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		0F2E88CD1C258D1900A8F059 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		0FB7C7021C26345700B453CF /* RoomsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsController.swift; sourceTree = "<group>"; };
 		0FC0ABCF1C20EE6D00BEC47F /* CinemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				0FC0ABE11C20EE6D00BEC47F /* Info.plist */,
 				0F2E88C51C244B3700A8F059 /* DataManager.swift */,
 				0F2E88C71C244C5600A8F059 /* Cinema.swift */,
+				0FB7C7021C26345700B453CF /* RoomsController.swift */,
 			);
 			path = CinemAdvisor;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				0FC0ABD51C20EE6D00BEC47F /* SearchController.swift in Sources */,
 				0F2E88C61C244B3700A8F059 /* DataManager.swift in Sources */,
 				0F2E88CE1C258D1900A8F059 /* MapController.swift in Sources */,
+				0FB7C7031C26345700B453CF /* RoomsController.swift in Sources */,
 				0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

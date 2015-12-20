@@ -15,29 +15,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="6Ow-GU-mnG" detailTextLabel="yzD-q3-vez" style="IBUITableViewCellStyleSubtitle" id="3ES-Cd-YL8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="Cq4-VM-VXd" detailTextLabel="ctw-BB-7SI" style="IBUITableViewCellStyleSubtitle" id="Yv0-ct-w4s">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ES-Cd-YL8" id="GnD-Ts-SyH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yv0-ct-w4s" id="eRT-hl-KJe">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Ow-GU-mnG">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cq4-VM-VXd">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yzD-q3-vez">
-                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ctw-BB-7SI">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="4P3-Xj-GfG" kind="show" id="xcD-d3-B4d"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,7 +48,7 @@
                             <outlet property="delegate" destination="nmD-aC-GX6" id="oTf-4P-OMs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Rechercher un cinéma" id="U0p-LM-21x">
+                    <navigationItem key="navigationItem" title="Cinémas" id="U0p-LM-21x">
                         <barButtonItem key="rightBarButtonItem" title="Carte" id="mT8-WL-Pwr">
                             <connections>
                                 <segue destination="0eE-hv-c3Q" kind="show" id="dOP-MR-g5P"/>
@@ -84,6 +87,7 @@
                             <constraint firstItem="eJj-fn-NPQ" firstAttribute="leading" secondItem="9KE-58-4kB" secondAttribute="leadingMargin" constant="-20" id="hKJ-tJ-eEx"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="EZr-7F-W0e"/>
                     <connections>
                         <outlet property="mapView" destination="eJj-fn-NPQ" id="ZX9-SM-MHb"/>
                     </connections>
@@ -91,6 +95,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNq-rq-aGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1424" y="424"/>
+        </scene>
+        <!--Salles-->
+        <scene sceneID="bpX-ad-L52">
+            <objects>
+                <viewController id="4P3-Xj-GfG" customClass="RoomsController" customModule="CinemAdvisor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ES3-oX-bOQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="MLF-ah-dPZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8gi-ND-Hxc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jt7-js-EAK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="lso-VD-Tl0" detailTextLabel="9XT-f2-IYY" style="IBUITableViewCellStyleSubtitle" id="hBa-2m-Puy">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hBa-2m-Puy" id="Egn-Qt-R4G">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lso-VD-Tl0">
+                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9XT-f2-IYY">
+                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jt7-js-EAK" firstAttribute="top" secondItem="8gi-ND-Hxc" secondAttribute="topMargin" id="IJx-qA-Cwk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jt7-js-EAK" secondAttribute="trailing" constant="-20" id="Qe5-zl-gyY"/>
+                            <constraint firstItem="MLF-ah-dPZ" firstAttribute="top" secondItem="jt7-js-EAK" secondAttribute="bottom" id="Zld-bv-haU"/>
+                            <constraint firstItem="jt7-js-EAK" firstAttribute="leading" secondItem="8gi-ND-Hxc" secondAttribute="leadingMargin" constant="-20" id="taI-0g-h46"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Salles" id="1WI-Cm-N5Q">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DbN-Wc-Oct"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCh-s7-O0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="1232"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FoH-Sl-WVr">
