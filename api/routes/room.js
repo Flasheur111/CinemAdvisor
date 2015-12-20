@@ -6,41 +6,69 @@ var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/test';
 var router = express.Router();
 
-
 /* Add room */
 router.get('/add/:idcinema/:roomname', function (req, res, next) {
     var id = req.params.idcinema;
     var name = req.params.roomname;
 
     if (id == null || name == null) {
-        res.send({ "error": "arguments"});
+        res.send({"error": "arguments"});
         return;
     }
 
     MongoClient.connect(url, function (err, db) {
-       db.collection('room').insert({ 'idcinema': id, 'roomname': name})
-        db.close();
+        db.collection('room').find({'idcinema': id, 'roomname': name}).count(function (_, count) {
+            if (count > 0) {
+                db.close();
+                res.send({"error": "rooms already exist"});
+            }
+            else
+            {
+                db.collection('room').insert({'idcinema': id, 'roomname': name})
+                db.close();
+                res.send({"error": "ok", "inserted": {"idcinema": id, "roomname": name}});
+            }
+        });
     });
-    res.send({ "error": "ok", "inserted": {"idcinema": id, "roomname": name }});
+
 
 });
 
-/* Get room */
-router.get('/', function (req,res, next) {
-    MongoClient.connect(url, function (err,db) {
+/* Get all rooms */
+router.get('/list', function (req, res, next) {
+    MongoClient.connect(url, function (err, db) {
         db.collection('room').find().toArray(function (err, doc) {
-            res.send(doc);
             db.close();
+            res.send(doc);
+        });
+    })
+});
+
+
+/* Get rooms of cinema */
+router.get('/list/:idcinema', function (req, res, next) {
+    var id = req.params.idcinema;
+
+    if (id == null)
+    {
+        res.send({"error":"arguments"});
+        return;
+    }
+
+    MongoClient.connect(url, function (err, db) {
+        db.collection('room').find({"idcinema":id}).toArray(function (err, doc) {
+            db.close();
+            res.send(doc);
         });
     })
 });
 
 /* Drop rooms */
-router.get('/drop', function(req,res,next) {
+router.get('/drop', function (req, res, next) {
     MongoClient.connect(url, function (err, db) {
         db.collection('room').drop();
-        res.send({ "error": "ok"});
         db.close();
+        res.send({"error": "ok"});
     });
 })
 
