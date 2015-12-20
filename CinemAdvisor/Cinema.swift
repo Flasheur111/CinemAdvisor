@@ -7,6 +7,7 @@
 //
 
 class Cinema {
+    let id:Int;
     let name: String;
     let description: String;
     var cp:Int;
@@ -14,7 +15,8 @@ class Cinema {
     var latitude:Double;
     var adresse: String;
     
-    init(name: String, description: String, cp:Int, longitude: Double, latitude: Double, adresse: String){
+    init(id:Int, name: String, description: String, cp:Int, longitude: Double, latitude: Double, adresse: String) {
+        self.id = id
         self.name = name
         self.description = description
         self.longitude = longitude

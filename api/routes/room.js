@@ -15,7 +15,7 @@ router.get('/add/:idcinema/:roomname', function (req, res, next) {
     }
 
     MongoClient.connect(url, function (err, db) {
-        db.collection('room').find({'idcinema': id, 'roomname': name}).count(function (_, count) {
+        db.collection('room').find({'idcinema': id, 'roomname': name.toLowerCase()}).count(function (_, count) {
             if (count > 0) {
                 db.close();
                 res.send({"error": "rooms already exist"});

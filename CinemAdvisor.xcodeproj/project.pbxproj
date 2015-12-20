@@ -18,6 +18,7 @@
 		0FC0ABD81C20EE6D00BEC47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */; };
 		0FC0ABDD1C20EE6D00BEC47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABDC1C20EE6D00BEC47F /* Assets.xcassets */; };
 		0FC0ABE01C20EE6D00BEC47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABDE1C20EE6D00BEC47F /* LaunchScreen.storyboard */; };
+		910E50421C270A1100CBA1B2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E50411C270A1100CBA1B2 /* Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0FC0ABDC1C20EE6D00BEC47F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0FC0ABDF1C20EE6D00BEC47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FC0ABE11C20EE6D00BEC47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		910E50411C270A1100CBA1B2 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				0FB7C7021C26345700B453CF /* RoomsController.swift */,
 				0FB7C7041C264C1500B453CF /* AddRoomController.swift */,
 				0FB7C7061C264E8100B453CF /* CommentsController.swift */,
+				910E50411C270A1100CBA1B2 /* Room.swift */,
 			);
 			path = CinemAdvisor;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				0F2E88C61C244B3700A8F059 /* DataManager.swift in Sources */,
 				0F2E88CE1C258D1900A8F059 /* MapController.swift in Sources */,
 				0FB7C7031C26345700B453CF /* RoomsController.swift in Sources */,
+				910E50421C270A1100CBA1B2 /* Room.swift in Sources */,
 				0FB7C7071C264E8100B453CF /* CommentsController.swift in Sources */,
 				0FB7C7051C264C1500B453CF /* AddRoomController.swift in Sources */,
 				0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */,

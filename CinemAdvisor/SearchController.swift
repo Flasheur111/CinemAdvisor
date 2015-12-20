@@ -19,7 +19,7 @@ class SearchController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.manager.GetCinema(setCinemas);
+        self.manager.GetCinema(setCinemas)
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -39,7 +39,8 @@ class SearchController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {        if (searchController.active && searchController.searchBar.text != "") {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if (searchController.active && searchController.searchBar.text != "") {
             return cinemaSearchResult.keys.count
         }
         return cinema.keys.count
