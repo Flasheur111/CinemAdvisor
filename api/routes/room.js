@@ -1,9 +1,7 @@
-/**
- * Created by Francois on 20/12/2015.
- */
 var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/test';
+var config = require('../config')
+var url = config.url_api;
 var router = express.Router();
 
 /* Add room */
@@ -30,8 +28,6 @@ router.get('/add/:idcinema/:roomname', function (req, res, next) {
             }
         });
     });
-
-
 });
 
 /* Get all rooms */

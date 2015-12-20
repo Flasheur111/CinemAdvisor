@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var cinema = require('./routes/cinema');
 var room = require('./routes/room');
+var room = require('./routes/comment');
 
 var app = express();
 
@@ -19,5 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/cinema', cinema);
 app.use('/room', room);
+app.use('/comment', comment);
 
 module.exports = app;

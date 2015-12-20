@@ -1,10 +1,10 @@
 var express = require('express');
 var request = require('request')
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/test';
+var config = require('../config')
+var url = config.url_api;
+var url_cinema_api = config.url_cinema_api;
 var router = express.Router();
-
-var urlapi = 'http://data.iledefrance.fr/api/records/1.0/search/?dataset=les_salles_de_cinemas_en_ile-de-france&rows=309'
 
 
 /* GET cinema listing. */
@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
         collection.find().count(function (err, count) {
             if (count == 0) {
                 request({
-                    url: urlapi,
+                    url: url_cinema_api,
                     json: true
                 }, function (error, response, body) {
                     if (!error && response.statusCode === 200) {
@@ -28,8 +28,6 @@ router.get('/', function (req, res, next) {
                                 db.close();
                             });
                         });
-
-
                     }
                 })
             }
@@ -39,7 +37,6 @@ router.get('/', function (req, res, next) {
                     db.close();
                 });
             }
-
         });
     });
 });
