@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var cinema = require('./routes/cinema');
 var room = require('./routes/room');
-var room = require('./routes/comment');
+var comment = require('./routes/comment');
 
 var app = express();
 
