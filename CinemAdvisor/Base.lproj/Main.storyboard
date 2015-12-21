@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hbg-CJ-u5l" style="IBUITableViewCellStyleDefault" id="oh7-nF-WI7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="hbg-CJ-u5l" style="IBUITableViewCellStyleDefault" id="oh7-nF-WI7">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oh7-nF-WI7" id="sIh-5y-3l3">
@@ -32,7 +32,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="beZ-eg-OGu" kind="show" id="cih-NM-pUB"/>
+                                    <segue destination="beZ-eg-OGu" kind="show" id="0DS-bH-zaS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -191,7 +191,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzI-wa-GNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="488-lu-d6Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="1232"/>
+            <point key="canvasLocation" x="1402" y="1232"/>
         </scene>
         <!--Ajouter un commentaire-->
         <scene sceneID="3zb-zB-aXT">

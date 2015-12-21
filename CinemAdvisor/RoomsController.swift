@@ -67,10 +67,8 @@ class RoomsController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+
         let room: Room = self.rooms[indexPath.row]
         cell!.textLabel?.text = room.name
         
