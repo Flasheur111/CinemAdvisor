@@ -206,18 +206,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-eO-m17" userLabel="Rating" customClass="FloatRatingView" customModule="CinemAdvisor" customModuleProvider="target">
-                                <rect key="frame" x="138" y="162" width="325" height="39"/>
+                                <rect key="frame" x="20" y="162" width="560" height="39"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="k8D-1S-5W5"/>
+                                    <constraint firstAttribute="height" constant="44" id="ZLh-vC-pKQ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="2.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="halfRatings" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="floatRatings" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="q6Z-eO-m17" firstAttribute="trailing" secondItem="AEq-KK-N1n" secondAttribute="trailingMargin" id="8Ep-cj-pNc"/>
+                            <constraint firstItem="q6Z-eO-m17" firstAttribute="leading" secondItem="AEq-KK-N1n" secondAttribute="leadingMargin" id="dg7-9n-GUD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter un commentaire" id="eMe-kv-OTM"/>
                     <connections>

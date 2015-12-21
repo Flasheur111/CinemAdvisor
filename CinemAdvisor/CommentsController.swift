@@ -17,20 +17,12 @@ class CommentsController: UIViewController, FloatRatingViewDelegate {
         
         //self.floatRatingView.emptyImage = UIImage(named: "StarEmpty")
         //self.floatRatingView.fullImage = UIImage(named: "StarFull")
-        self.floatRatingView.delegate = self
-        self.floatRatingView.contentMode = UIViewContentMode.ScaleAspectFit
-        
-        self.floatRatingView.maxRating = 5
-        self.floatRatingView.minRating = 1
-        self.floatRatingView.rating = 2.5
-        self.floatRatingView.editable = true
-        self.floatRatingView.halfRatings = true
-        self.floatRatingView.floatRatings = false
         
     }
     
     func floatRatingView(ratingView: FloatRatingView, isUpdating rating:Float) {
         //self.liveLabel.text = NSString(format: "%.2f", self.floatRatingView.rating) as String
+        self.floatRatingView.contentMode = UIViewContentMode.ScaleAspectFit
     }
     
     func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
