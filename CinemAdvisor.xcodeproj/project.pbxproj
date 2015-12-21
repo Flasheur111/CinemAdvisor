@@ -154,6 +154,9 @@
 		0FC0ABC71C20EE6D00BEC47F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					StarEmpty,
+				);
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Epita;

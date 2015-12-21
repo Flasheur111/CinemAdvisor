@@ -196,7 +196,7 @@
         <!--Ajouter un commentaire-->
         <scene sceneID="3zb-zB-aXT">
             <objects>
-                <viewController id="nvA-6f-3ec" sceneMemberID="viewController">
+                <viewController id="nvA-6f-3ec" customClass="CommentsController" customModule="CinemAdvisor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MQQ-gX-7Mk"/>
                         <viewControllerLayoutGuide type="bottom" id="e5f-l9-UBI"/>
@@ -204,9 +204,25 @@
                     <view key="view" contentMode="scaleToFill" id="AEq-KK-N1n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-eO-m17" userLabel="Rating" customClass="FloatRatingView" customModule="CinemAdvisor" customModuleProvider="target">
+                                <rect key="frame" x="138" y="162" width="325" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="k8D-1S-5W5"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter un commentaire" id="eMe-kv-OTM"/>
+                    <connections>
+                        <outlet property="floatRatingView" destination="q6Z-eO-m17" id="jFZ-nQ-ivi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-9H-3M1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,4 +311,8 @@
             <point key="canvasLocation" x="-160" y="424"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="StarEmpty" width="44" height="44"/>
+        <image name="StarFull" width="22" height="22"/>
+    </resources>
 </document>

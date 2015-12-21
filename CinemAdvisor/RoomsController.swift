@@ -49,7 +49,7 @@ class RoomsController: UITableViewController {
                 self.tableView.reloadData()
             }
             else {
-                let alertController = UIAlertController(title: "Error", message: "The room already exists!", preferredStyle: .Alert)
+                let alertController = UIAlertController(title: "Erreur", message: "Cette salle existe déjà !", preferredStyle: .Alert)
                 let yesAction = UIAlertAction(title: "OK", style: .Default, handler: { _ in})
                 alertController.addAction(yesAction)
                 self.presentViewController(alertController, animated: true, completion: nil)
