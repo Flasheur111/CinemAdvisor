@@ -13,6 +13,7 @@
 		0FB7C7031C26345700B453CF /* RoomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7C7021C26345700B453CF /* RoomsController.swift */; };
 		0FB7C7051C264C1500B453CF /* AddRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7C7041C264C1500B453CF /* AddRoomController.swift */; };
 		0FB7C7071C264E8100B453CF /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7C7061C264E8100B453CF /* CommentsController.swift */; };
+		0FB7C7091C284F8F00B453CF /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB7C7081C284F8F00B453CF /* FloatRatingView.swift */; };
 		0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */; };
 		0FC0ABD51C20EE6D00BEC47F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */; };
 		0FC0ABD81C20EE6D00BEC47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		0FB7C7021C26345700B453CF /* RoomsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsController.swift; sourceTree = "<group>"; };
 		0FB7C7041C264C1500B453CF /* AddRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomController.swift; sourceTree = "<group>"; };
 		0FB7C7061C264E8100B453CF /* CommentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
+		0FB7C7081C284F8F00B453CF /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		0FC0ABCF1C20EE6D00BEC47F /* CinemAdvisor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemAdvisor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FB7C70A1C28501F00B453CF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7C7021C26345700B453CF /* RoomsController.swift */,
+				0FB7C7061C264E8100B453CF /* CommentsController.swift */,
+				0FB7C7041C264C1500B453CF /* AddRoomController.swift */,
+				0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */,
+				0F2E88CD1C258D1900A8F059 /* MapController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		0FB7C70B1C28503700B453CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F2E88C71C244C5600A8F059 /* Cinema.swift */,
+				910E50411C270A1100CBA1B2 /* Room.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0FB7C70C1C28504D00B453CF /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				0F2E88C51C244B3700A8F059 /* DataManager.swift */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		0FB7C70D1C28507900B453CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0FC0ABDE1C20EE6D00BEC47F /* LaunchScreen.storyboard */,
+				0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		0FB7C70E1C28508800B453CF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0FB7C7081C284F8F00B453CF /* FloatRatingView.swift */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		0FC0ABC61C20EE6D00BEC47F = {
 			isa = PBXGroup;
 			children = (
@@ -68,19 +116,14 @@
 		0FC0ABD11C20EE6D00BEC47F /* CinemAdvisor */ = {
 			isa = PBXGroup;
 			children = (
-				0F2E88CD1C258D1900A8F059 /* MapController.swift */,
+				0FB7C70E1C28508800B453CF /* Tools */,
+				0FB7C70D1C28507900B453CF /* View */,
+				0FB7C70C1C28504D00B453CF /* DataManager */,
+				0FB7C70B1C28503700B453CF /* Model */,
+				0FB7C70A1C28501F00B453CF /* ViewController */,
 				0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */,
-				0FC0ABD41C20EE6D00BEC47F /* SearchController.swift */,
-				0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */,
 				0FC0ABDC1C20EE6D00BEC47F /* Assets.xcassets */,
-				0FC0ABDE1C20EE6D00BEC47F /* LaunchScreen.storyboard */,
 				0FC0ABE11C20EE6D00BEC47F /* Info.plist */,
-				0F2E88C51C244B3700A8F059 /* DataManager.swift */,
-				0F2E88C71C244C5600A8F059 /* Cinema.swift */,
-				0FB7C7021C26345700B453CF /* RoomsController.swift */,
-				0FB7C7041C264C1500B453CF /* AddRoomController.swift */,
-				0FB7C7061C264E8100B453CF /* CommentsController.swift */,
-				910E50411C270A1100CBA1B2 /* Room.swift */,
 			);
 			path = CinemAdvisor;
 			sourceTree = "<group>";
@@ -165,6 +208,7 @@
 				910E50421C270A1100CBA1B2 /* Room.swift in Sources */,
 				0FB7C7071C264E8100B453CF /* CommentsController.swift in Sources */,
 				0FB7C7051C264C1500B453CF /* AddRoomController.swift in Sources */,
+				0FB7C7091C284F8F00B453CF /* FloatRatingView.swift in Sources */,
 				0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
