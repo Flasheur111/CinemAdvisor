@@ -7,10 +7,13 @@
 //
 
 class Room {
+    let roomId: String;
     let name: String;
+    
     var cinemaId:Int;
     
-    init(name: String, cinemaId:Int){
+    init(roomId: String, name: String, cinemaId:Int){
+        self.roomId = roomId
         self.name = name
         self.cinemaId = cinemaId
     }

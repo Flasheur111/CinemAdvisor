@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
                             fieldList.push(body['records'][i].fields);
                         }
                         collection.insertMany(fieldList, function (error, inserted) {
-                            collection.find().toArray(function (err, cinema) {
+                            collection.find().sort({ "ville":-1 }).toArray(function (err, cinema) {
                                 res.send(cinema);
                                 db.close();
                             });
@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
                 })
             }
             else {
-                collection.find().toArray(function (err, cinema) {
+                collection.find().sort({ "ville":1 }).toArray(function (err, cinema) {
                     res.send(cinema);
                     db.close();
                 });

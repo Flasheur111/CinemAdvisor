@@ -76,8 +76,10 @@ class RoomsController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (tableView.indexPathForSelectedRow != nil) {
-            // CommentsController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let secondViewController = segue.destinationViewController as! CommentsController
+            secondViewController.cinema = self.cinema;
+            secondViewController.room = self.rooms[indexPath.row];
         }
     }
     

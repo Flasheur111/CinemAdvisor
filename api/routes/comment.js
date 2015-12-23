@@ -8,20 +8,20 @@ var url = config.url_api;
 var router = express.Router();
 
 /* Add a comment */
-router.get('/add/:idcinema/:roomname/:comment/:user/:star', function (req, res, next) {
-    var id = req.params.idcinema;
-    var name = req.params.roomname;
+router.get('/add/:idcinema/:idroom/:comment/:user/:grade', function (req, res, next) {
+    var idcinema = req.params.idcinema;
+    var idroom = req.params.idroom;
     var comment = req.params.comment;
     var user = req.params.user;
-    var star = req.params.star;
+    var grade = req.params.grade;
 
-    if (id == null || name == null || comment == null || user == null || star == null) {
+    if (idcinema == null || idroom == null || comment == null || user == null || grade == null) {
         res.send({"error": "arguments"});
         return;
     }
 
     MongoClient.connect(url, function (err, db) {
-        var toInsert = {'idcinema': id, 'roomname': name, 'comment': comment, 'user': user, 'start': start};
+        var toInsert = {'idcinema': idcinema, 'idroom': idroom, 'comment': comment, 'user': user, 'grade': grade, 'date': new Date() };
         db.collection('comment').insert(toInsert);
         db.close();
         res.send({"error": "ok", "inserted": toInsert});
@@ -36,6 +36,23 @@ router.get('/list', function (req, res, next) {
             res.send(doc);
         });
     })
+});
+
+router.get('/list/:idcinema/:idroom', function (req,res, next) {
+    var idcinema = req.params.idcinema;
+    var idroom = req.params.idroom;
+
+    if (idcinema == null || idroom == null) {
+        res.send({"error": "arguments" });
+        return;
+    }
+
+    MongoClient.connect(url, function (err, db) {
+       db.collection('comment').find({ 'idcinema': idcinema, 'idroom' : idroom}).toArray(function(err, doc) {
+          db.close();
+           res.send(doc);
+       });
+    });
 });
 
 /* Get comments of cinema and rooms */

@@ -11,6 +11,7 @@ class DataManager {
     var get_cinemas_url = "http://localhost:3000/cinema"
     var add_room_url = "http://localhost:3000/room/add/"
     var get_rooms_url = "http://localhost:3000/room/list/"
+    var get_comment_url = "http://localhost:3000/comment/list/"
     
     func GetCinema(completion: ((cinema: Array<Cinema>) -> Void))
     {
@@ -64,6 +65,7 @@ class DataManager {
                 let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSMutableArray
                 for entry in jsonResult {
                     let room:Room = Room(
+                        roomId: entry["_id"] as! String,
                         name: entry["roomname"] as! String,
                         cinemaId: (entry["idcinema"] as! NSString).integerValue)
                     rooms.append(room);
@@ -91,13 +93,47 @@ class DataManager {
             {
                 let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 if (jsonResult["error"] as! String == "ok") {
-                    room = Room(name: jsonResult["inserted"]!["roomname"] as! String, cinemaId: (jsonResult["inserted"]!["idcinema"] as! NSString).integerValue)
+                    room = Room(roomId: "", name: jsonResult["inserted"]!["roomname"] as! String, cinemaId: (jsonResult["inserted"]!["idcinema"] as! NSString).integerValue)
                     completion(room: room!)
                 }
                 else {
                     print("Error adding room")
                     completion(room: nil)
                 }
+            } catch _ {}
+        });
+        
+        jsonQuery.resume();
+    }
+    
+    func GetCommentsByCinemaRoomId(cinemaId: Int, roomId: String, completion: ((rooms: Array<Comment>) -> Void)) {
+        var comments:Array<Comment> = []
+        
+        let url = NSURL(string: get_comment_url + String(cinemaId) + "/" + roomId)!
+        let urlSession = NSURLSession.sharedSession()
+        
+        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
+            if (error != nil) {
+                print(error!.localizedDescription)
+            }
+            
+            do
+            {
+                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSMutableArray
+                for entry in jsonResult {
+                    let formatDate = NSDateFormatter()
+                    formatDate.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
+                    let date = formatDate.dateFromString(entry["date"] as! String);
+                    let comment:Comment = Comment(
+                        cinemaId: (entry["idcinema"] as! NSString).integerValue,
+                        roomId: entry["idroom"] as! String,
+                        comment: entry["comment"] as! String,
+                        user: entry["user"] as! String,
+                        star: (entry["grade"] as! NSString).floatValue,
+                        date: date!)
+                    comments.append(comment);
+                }
+                completion(rooms: comments);
             } catch _ {}
         });
         

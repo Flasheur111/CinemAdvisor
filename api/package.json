@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "./node_modules/.bin/supervisor ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -13,6 +13,7 @@
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "mongodb": "~2.0.52",
-    "request": "~2.67.0"
+    "request": "~2.67.0",
+    "supervisor": "~0.9.1"
   }
 }
