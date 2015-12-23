@@ -28,12 +28,17 @@ class CommentsController: UITableViewController {
         });
     }
     
-       /*
+    
         @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
-            let source: AddRoomController = segue.sourceViewController as! AddRoomController
-            self.manager.AddRoom(self.cinema!.id, roomName: source.roomName, completion: appendRoom)
+            let source: AddCommentController = segue.sourceViewController as! AddCommentController
+            self.manager.AddComment(
+                (self.cinema?.id)!,
+                roomId: (self.room?.roomId)!,
+                comment: source.comment.text!,
+                user: source.user.text!,
+                rate: String(source.floatRatingView.rating))
         }
-        
+       /*
         func appendRoom(room: Room?) -> Void {
             dispatch_async(dispatch_get_main_queue(), {
                 if (room != nil) {
@@ -78,8 +83,11 @@ class CommentsController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (self.cinema != nil && self.room != nil) {
             let secondViewController = segue.destinationViewController as! AddCommentController
-            secondViewController.
+            secondViewController.cinemaModel = (self.cinema)!
+            secondViewController.roomModel = (self.room)!
+        }
     }
     
     

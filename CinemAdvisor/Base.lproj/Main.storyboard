@@ -315,15 +315,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter un commentaire" id="eMe-kv-OTM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="m1z-yz-0qw"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="m1z-yz-0qw">
+                            <connections>
+                                <segue destination="rYU-bt-zno" kind="unwind" unwindAction="unwindToSegue:" id="caW-Jz-Gz7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addAction" destination="m1z-yz-0qw" id="NZJ-Q2-FID"/>
+                        <outlet property="cinema" destination="50x-45-uLF" id="3LV-Xn-ZvO"/>
+                        <outlet property="comment" destination="9r9-4j-mbh" id="yIf-Nh-LIv"/>
                         <outlet property="floatRatingView" destination="q6Z-eO-m17" id="GJz-Tc-z7J"/>
                         <outlet property="liveRate" destination="IJf-im-R8C" id="MTu-K5-fPw"/>
+                        <outlet property="room" destination="x1S-Jz-WWj" id="imX-fL-5Yo"/>
+                        <outlet property="user" destination="GhO-gN-W9z" id="NH0-vO-YR2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-9H-3M1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rYU-bt-zno" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1402" y="1969"/>
         </scene>
@@ -343,27 +352,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9OR-8O-LH6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9OR-8O-LH6">
                                             <rect key="frame" x="10" y="32" width="156" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPM-P1-tvU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPM-P1-tvU">
                                             <rect key="frame" x="179" y="32" width="225" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3k-sZ-zbn">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3k-sZ-zbn">
                                             <rect key="frame" x="10" y="8" width="394" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xxz-T0-Gie" customClass="FloatRatingView" customModule="CinemAdvisor" customModuleProvider="target">
-                                            <rect key="frame" x="412" y="16" width="180" height="37"/>
+                                            <rect key="frame" x="457" y="16" width="135" height="37"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="180" id="kS9-vO-6II"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                                 <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>

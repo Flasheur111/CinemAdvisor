@@ -1,4 +1,4 @@
-//
+ //
 //  DataManager.swift
 //  CinemAdvisor
 //
@@ -11,6 +11,7 @@ class DataManager {
     var get_cinemas_url = "http://localhost:3000/cinema"
     var add_room_url = "http://localhost:3000/room/add/"
     var get_rooms_url = "http://localhost:3000/room/list/"
+    var add_comment_url = "http://localhost:3000/comment/add/"
     var get_comment_url = "http://localhost:3000/comment/list/"
     
     func GetCinema(completion: ((cinema: Array<Cinema>) -> Void))
@@ -135,6 +136,22 @@ class DataManager {
                 }
                 completion(rooms: comments);
             } catch _ {}
+        });
+        
+        jsonQuery.resume();
+    }
+    
+    func AddComment(cinemaId: Int, roomId: String, comment: String, user: String, rate: String) {
+        var fullUrl: String = add_comment_url + String(cinemaId) + "/" + String(roomId) +  "/";
+        fullUrl += String(comment) + "/" + String(user) + "/" + rate
+        
+        let url = NSURL(string: fullUrl)!
+        let urlSession = NSURLSession.sharedSession()
+        
+        let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
+            if (error != nil) {
+                print(error!.localizedDescription)
+            }
         });
         
         jsonQuery.resume();

@@ -48,7 +48,7 @@ router.get('/list/:idcinema/:idroom', function (req,res, next) {
     }
 
     MongoClient.connect(url, function (err, db) {
-       db.collection('comment').find({ 'idcinema': idcinema, 'idroom' : idroom}).toArray(function(err, doc) {
+       db.collection('comment').find({ 'idcinema': idcinema, 'idroom' : idroom}).sort({ date: -1 }).toArray(function(err, doc) {
           db.close();
            res.send(doc);
        });

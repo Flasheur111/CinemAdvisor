@@ -33,7 +33,6 @@ class RoomsController: UITableViewController {
     }
     
     func configureView() {
-        print(detailCinema?.adresse)
         self.cinema = detailCinema!
     }
     
