@@ -67,28 +67,37 @@ function getAverageComments(id, cb) {
         },
         function (db, document, callback) {
             var full = [];
-            async.forEach(document, function (doc, callback2) {
-                db.collection('comment').find({'idcinema': id, 'idroom': doc._id.toString()}).toArray(function (err, out) {
-                    var items = [];
-                    var sum = 0;
-                    if (out) {
-                        for (var i = 0; i < out.length; i++) {
-                            if (out[i]) {
-                                items.push(out[i].grade);
-                                sum += out[i].grade;
+            if (document.length > 0) {
+                async.forEach(document, function (doc, callback2) {
+                    db.collection('comment').find({
+                        'idcinema': id,
+                        'idroom': doc._id.toString()
+                    }).toArray(function (err, out) {
+                        var items = [];
+                        var sum = 0;
+                        if (out) {
+                            for (var i = 0; i < out.length; i++) {
+                                if (out[i]) {
+                                    items.push(out[i].grade);
+                                    sum += out[i].grade;
+                                }
                             }
+                            var avg = sum / items.length;
+                            doc.avg = avg ? avg : 0;
                         }
-                        var avg = sum / items.length;
-                        doc.avg = avg ? avg : 0;
-                    }
-                    else
-                        doc.avg = 0;
+                        else
+                            doc.avg = 0;
 
-                    full.push(doc);
-                    if (document[document.length - 1]._id == doc._id)
-                        callback(null, db, full);
+                        full.push(doc);
+                        if (document[document.length - 1]._id == doc._id)
+                            callback(null, db, full);
+                    });
                 });
-            });
+            }
+            else
+            {
+                callback(null,db, [])
+            }
 
         }
     ], function (err, db, full) {

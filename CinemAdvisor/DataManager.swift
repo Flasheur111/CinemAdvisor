@@ -68,7 +68,8 @@ class DataManager {
                     let room:Room = Room(
                         roomId: entry["_id"] as! String,
                         name: entry["roomname"] as! String,
-                        cinemaId: (entry["idcinema"] as! NSString).integerValue)
+                        cinemaId: (entry["idcinema"] as! NSString).integerValue,
+                        grade: (entry["avg"] as! NSNumber).floatValue)
                     rooms.append(room);
                 }
                 completion(rooms: rooms);
@@ -94,7 +95,7 @@ class DataManager {
             {
                 let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                 if (jsonResult["error"] as! String == "ok") {
-                    room = Room(roomId: "", name: jsonResult["inserted"]!["roomname"] as! String, cinemaId: (jsonResult["inserted"]!["idcinema"] as! NSString).integerValue)
+                    room = Room(roomId: "", name: jsonResult["inserted"]!["roomname"] as! String, cinemaId: (jsonResult["inserted"]!["idcinema"] as! NSString).integerValue, grade: 0)
                     completion(room: room!)
                 }
                 else {
@@ -130,7 +131,7 @@ class DataManager {
                         roomId: entry["idroom"] as! String,
                         comment: entry["comment"] as! String,
                         user: entry["user"] as! String,
-                        star: (entry["grade"] as! NSString).floatValue,
+                        star: entry["grade"] as! Float32,
                         date: date!)
                     comments.append(comment);
                 }
