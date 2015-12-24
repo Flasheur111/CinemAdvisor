@@ -10,14 +10,13 @@ import UIKit
 
 class CommentsController: UITableViewController {
     var comments: Array<Comment> = Array<Comment>()
-    var manager: DataManager = DataManager()
     var cinema: Cinema? = nil
     
     var room: Room? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.manager.GetCommentsByCinemaRoomId((self.cinema?.id)!, roomId: (self.room?.roomId)!, completion: setComments)
+        DataManager.GetCommentsByCinemaRoomId((self.cinema?.id)!, roomId: (self.room?.roomId)!, completion: setComments)
     }
     
     func setComments(comments:Array<Comment>) -> Void {
@@ -31,7 +30,7 @@ class CommentsController: UITableViewController {
     
         @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
             let source: AddCommentController = segue.sourceViewController as! AddCommentController
-            self.manager.AddComment(
+            DataManager.AddComment(
                 (self.cinema?.id)!,
                 roomId: (self.room?.roomId)!,
                 comment: source.comment.text!,

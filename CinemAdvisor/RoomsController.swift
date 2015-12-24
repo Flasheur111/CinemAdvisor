@@ -10,7 +10,6 @@ import UIKit
 
 class RoomsController: UITableViewController {
     var rooms: Array<Room> = Array<Room>()
-    var manager: DataManager = DataManager()
     var cinema: Cinema? = nil
     
     var detailCinema: Cinema? {
@@ -18,18 +17,25 @@ class RoomsController: UITableViewController {
             configureView()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.manager.GetRoomsByCinemaId((self.detailCinema?.id)!, completion: setRooms)
+        DataManager.GetRoomsByCinemaId((self.detailCinema?.id)!, completion: setRooms)
     }
     
-    func setRooms(rooms: Array<Room>) -> Void {
-        self.rooms = rooms
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        });
+    func setRooms(error: String?, rooms: Array<Room>?) -> Void {
+        if (error != nil)
+        {
+            ErrorAlert.CannotConnect(self);
+        }
+        else
+        {
+            self.rooms = rooms!
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            });
+        }
     }
     
     func configureView() {
@@ -38,9 +44,9 @@ class RoomsController: UITableViewController {
     
     @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
         let source: AddRoomController = segue.sourceViewController as! AddRoomController
-        self.manager.AddRoom(self.cinema!.id, roomName: source.roomName, completion: appendRoom)
+        DataManager.AddRoom(self.cinema!.id, roomName: source.roomName, completion: appendRoom)
     }
-
+    
     func appendRoom(room: Room?) -> Void {
         dispatch_async(dispatch_get_main_queue(), {
             if (room != nil) {
@@ -55,8 +61,8 @@ class RoomsController: UITableViewController {
             }
         });
     }
-
-
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
     }
@@ -67,7 +73,7 @@ class RoomsController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! RoomCellController
-
+        
         let room: Room = self.rooms[indexPath.row]
         cell.roomLabel.text = room.name
         cell.floatRatingView.rating = room.grade

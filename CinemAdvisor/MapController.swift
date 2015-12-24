@@ -12,12 +12,10 @@ import MapKit
 class MapController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
-    var dataManager:DataManager = DataManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataManager.GetCinema(loadCinema);
+        DataManager.GetCinema(loadCinema);
         
         let idf = CLLocationCoordinate2D(
             latitude:48.8584197,
@@ -31,18 +29,22 @@ class MapController: UIViewController {
         mapView.setRegion(region, animated:true)
     }
     
-    func loadCinema(cinema:Array<Cinema>) -> Void
+    func loadCinema(error: String?, cinema:Array<Cinema>?) -> Void
     {
-        for c in cinema {
-            let location = CLLocationCoordinate2D(
-                latitude: c.latitude,
-                longitude: c.longitude
-            )
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = location
-            annotation.title = c.name
-            annotation.subtitle = c.description
-            mapView.addAnnotation(annotation)
+        
+        if (error != nil)
+        {
+            for c in cinema! {
+                let location = CLLocationCoordinate2D(
+                    latitude: c.latitude,
+                    longitude: c.longitude
+                )
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = location
+                annotation.title = c.name
+                annotation.subtitle = c.description
+                mapView.addAnnotation(annotation)
+            }
         }
     }
 }

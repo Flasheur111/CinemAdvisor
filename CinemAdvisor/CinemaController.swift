@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SearchController: UITableViewController {
-    var manager:DataManager = DataManager();
-    
+class CinemaController: UITableViewController {
+
     var cinemaSearchResult:Dictionary<String, Array<Cinema>> = Dictionary<String, Array<Cinema>>();
     var cinema:Dictionary<String, Array<Cinema>> = Dictionary<String, Array<Cinema>>();
     
@@ -19,7 +18,7 @@ class SearchController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.manager.GetCinema(setCinemas)
+        DataManager.GetCinema(setCinemas)
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -27,12 +26,19 @@ class SearchController: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
     }
     
-    func setCinemas(cinemas: Array<Cinema>) -> Void {
-            self.cinema = get_dic(cinemas)
-
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        });
+    func setCinemas(error: String?, cinemas: Array<Cinema>?) -> Void {
+        if (error != nil)
+        {
+            ErrorAlert.CannotConnect(self);
+        }
+        else
+        {
+            self.cinema = get_dic(cinemas!)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            });
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -125,7 +131,7 @@ class SearchController: UITableViewController {
     }
 }
 
-extension SearchController: UISearchResultsUpdating {
+extension CinemaController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
