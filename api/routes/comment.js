@@ -21,7 +21,7 @@ router.get('/add/:idcinema/:idroom/:comment/:user/:grade', function (req, res, n
     }
 
     MongoClient.connect(url, function (err, db) {
-        var toInsert = {'idcinema': idcinema, 'idroom': idroom, 'comment': comment, 'user': user, 'grade': grade, 'date': new Date() };
+        var toInsert = {'idcinema': idcinema, 'idroom': idroom, 'comment': comment, 'user': user, 'grade': parseFloat(grade), 'date': new Date() };
         db.collection('comment').insert(toInsert);
         db.close();
         res.send({"error": "ok", "inserted": toInsert});
@@ -55,23 +55,6 @@ router.get('/list/:idcinema/:idroom', function (req,res, next) {
     });
 });
 
-/* Get comments of cinema and rooms */
-router.get('/list/:idcinema/:roomname', function (req, res, next) {
-    var id = req.params.idcinema;
-    var room = req.params.roomname;
-
-    if (id == null || roomname) {
-        res.send({"error": "arguments"});
-        return;
-    }
-
-    MongoClient.connect(url, function (err, db) {
-        db.collection('comment').find({"idcinema": id, "roomname": room}).toArray(function (err, doc) {
-            db.close();
-            res.send(doc);
-        });
-    })
-});
 
 /* Drop comments */
 router.get('/drop', function (req, res, next) {
