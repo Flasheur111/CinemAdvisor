@@ -14,6 +14,7 @@
     "serve-favicon": "~2.3.0",
     "mongodb": "~2.0.52",
     "request": "~2.67.0",
-    "supervisor": "~0.9.1"
+    "supervisor": "~0.9.1",
+    "async": "~1.5.0"
   }
 }
