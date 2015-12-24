@@ -1,5 +1,5 @@
 //
-//  CommentCellController.swift
+// RoomCellController.swift
 //  CinemAdvisor
 //
 //  Created by François BOITEUX on 22/12/2015.
@@ -8,16 +8,14 @@
 
 import UIKit
 
-class CommentCellController: UITableViewCell {
-    @IBOutlet var userLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var commentLabel: UILabel!
+class RoomCellController: UITableViewCell {
+    @IBOutlet var roomLabel: UILabel!
     @IBOutlet var floatRatingView: FloatRatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

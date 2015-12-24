@@ -15,23 +15,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="hbg-CJ-u5l" style="IBUITableViewCellStyleDefault" id="oh7-nF-WI7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="oh7-nF-WI7" customClass="RoomCellController" customModule="CinemAdvisor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oh7-nF-WI7" id="sIh-5y-3l3">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbg-CJ-u5l">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RMY-FN-Zpf" customClass="FloatRatingView" customModule="CinemAdvisor" customModuleProvider="target">
+                                            <rect key="frame" x="424" y="6" width="135" height="37"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="135" id="ezr-v7-2mH"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpf-7S-ThE">
+                                            <rect key="frame" x="8" y="11" width="403" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="RMY-FN-Zpf" secondAttribute="bottom" constant="-8" id="323-lY-kVB"/>
+                                        <constraint firstItem="RMY-FN-Zpf" firstAttribute="top" secondItem="sIh-5y-3l3" secondAttribute="topMargin" constant="-2" id="4vo-el-uzS"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Zpf-7S-ThE" secondAttribute="bottom" constant="3" id="5FK-Ug-rcf"/>
+                                        <constraint firstItem="RMY-FN-Zpf" firstAttribute="leading" secondItem="Zpf-7S-ThE" secondAttribute="trailing" constant="13" id="5zS-ZR-PF0"/>
+                                        <constraint firstItem="Zpf-7S-ThE" firstAttribute="top" secondItem="sIh-5y-3l3" secondAttribute="topMargin" constant="3" id="Rgs-qa-Lpo"/>
+                                        <constraint firstItem="Zpf-7S-ThE" firstAttribute="leading" secondItem="sIh-5y-3l3" secondAttribute="leadingMargin" id="hNf-Mp-Q1L"/>
+                                        <constraint firstItem="RMY-FN-Zpf" firstAttribute="trailing" secondItem="sIh-5y-3l3" secondAttribute="trailingMargin" id="oBw-4m-q5i"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="floatRatingView" destination="RMY-FN-Zpf" id="w8g-zW-85q"/>
+                                    <outlet property="roomLabel" destination="Zpf-7S-ThE" id="BZT-ux-9MD"/>
                                     <segue destination="4fM-Zp-Pkt" kind="show" id="bTx-Gg-ZZG"/>
                                 </connections>
                             </tableViewCell>
@@ -51,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sx-RX-HS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="1224"/>
+            <point key="canvasLocation" x="694" y="1248"/>
         </scene>
         <!--Rechercher un cinéma-->
         <scene sceneID="GYq-bW-UmX">

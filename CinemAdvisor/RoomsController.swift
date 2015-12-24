@@ -66,12 +66,13 @@ class RoomsController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! RoomCellController
 
         let room: Room = self.rooms[indexPath.row]
-        cell!.textLabel?.text = room.name
+        cell.roomLabel.text = room.name
+        cell.floatRatingView.rating = room.grade
         
-        return cell!;
+        return cell;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
