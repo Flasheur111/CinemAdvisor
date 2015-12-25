@@ -1,4 +1,5 @@
 start: install
+	if [ -d "data_store" ]; then echo "Dir data_store alreadyexists"; else mkdir data_store; echo "Data_store directory created"; fi
 	mongod --dbpath data_store&
 	npm start
 
@@ -8,9 +9,9 @@ stop:
 install: init
 	npm install
 
-clean:
+clean : stop
 	rm -rf npm-debug.log
-	rm -rf data_store/*
+	rm -rf data_store
 
 init:
 	mongod --dbpath data_store&
