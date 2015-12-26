@@ -26,6 +26,7 @@ class CinemaController: UITableViewController {
         tableView.tableHeaderView = searchController.searchBar
     }
     
+    
     func setCinemas(error: String?, cinemas: Array<Cinema>?) -> Void {
         if (error != nil)
         {

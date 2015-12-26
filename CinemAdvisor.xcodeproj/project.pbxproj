@@ -20,10 +20,10 @@
 		0FC0ABD31C20EE6D00BEC47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */; };
 		0FC0ABD51C20EE6D00BEC47F /* CinemaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD41C20EE6D00BEC47F /* CinemaController.swift */; };
 		0FC0ABD81C20EE6D00BEC47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABD61C20EE6D00BEC47F /* Main.storyboard */; };
-		0FC0ABDD1C20EE6D00BEC47F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABDC1C20EE6D00BEC47F /* Images.xcassets */; };
 		0FC0ABE01C20EE6D00BEC47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0ABDE1C20EE6D00BEC47F /* LaunchScreen.storyboard */; };
 		0FC4309A1C2C6CF000EC0BD8 /* RoomCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC430991C2C6CF000EC0BD8 /* RoomCellController.swift */; };
 		0FC4309C1C2C7C7C00EC0BD8 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4309B1C2C7C7C00EC0BD8 /* ErrorAlert.swift */; };
+		34CAF7471C2F10C000B3DF9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CAF7461C2F10C000B3DF9C /* Images.xcassets */; };
 		910E50421C270A1100CBA1B2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E50411C270A1100CBA1B2 /* Room.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,11 +42,11 @@
 		0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FC0ABD41C20EE6D00BEC47F /* CinemaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaController.swift; sourceTree = "<group>"; };
 		0FC0ABD71C20EE6D00BEC47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0FC0ABDC1C20EE6D00BEC47F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0FC0ABDF1C20EE6D00BEC47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0FC0ABE11C20EE6D00BEC47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FC430991C2C6CF000EC0BD8 /* RoomCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCellController.swift; sourceTree = "<group>"; };
 		0FC4309B1C2C7C7C00EC0BD8 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		34CAF7461C2F10C000B3DF9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		910E50411C270A1100CBA1B2 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +137,8 @@
 				0FB7C70B1C28503700B453CF /* Model */,
 				0FB7C70A1C28501F00B453CF /* ViewController */,
 				0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */,
-				0FC0ABDC1C20EE6D00BEC47F /* Images.xcassets */,
 				0FC0ABE11C20EE6D00BEC47F /* Info.plist */,
+				34CAF7461C2F10C000B3DF9C /* Images.xcassets */,
 			);
 			path = CinemAdvisor;
 			sourceTree = "<group>";
@@ -205,8 +205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34CAF7471C2F10C000B3DF9C /* Images.xcassets in Resources */,
 				0FC0ABE01C20EE6D00BEC47F /* LaunchScreen.storyboard in Resources */,
-				0FC0ABDD1C20EE6D00BEC47F /* Images.xcassets in Resources */,
 				0FC0ABD81C20EE6D00BEC47F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
