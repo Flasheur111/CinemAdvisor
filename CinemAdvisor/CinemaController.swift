@@ -9,9 +9,9 @@
 import UIKit
 
 class CinemaController: UITableViewController {
-
-    var cinemaSearchResult:Dictionary<String, Array<Cinema>> = Dictionary<String, Array<Cinema>>();
-    var cinema:Dictionary<String, Array<Cinema>> = Dictionary<String, Array<Cinema>>();
+    
+    var cinemaSearchResult:[(String, Array<Cinema>)] = [(String, Array<Cinema>)]()
+    var cinema:[(String, Array<Cinema>)] = [(String, Array<Cinema>)]();
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -33,7 +33,7 @@ class CinemaController: UITableViewController {
         }
         else
         {
-            self.cinema = get_dic(cinemas!)
+            self.cinema = get_list(cinemas!)
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
@@ -47,73 +47,69 @@ class CinemaController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (searchController.active && searchController.searchBar.text != "") {
-            return cinemaSearchResult.keys.count
+            return cinemaSearchResult.count
         }
-        return cinema.keys.count
+        return cinema.count
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (searchController.active && searchController.searchBar.text != "") {
-            return self.cinemaSearchResult.keys[self.cinemaSearchResult.startIndex.advancedBy(section)].capitalizedString
+            return self.cinemaSearchResult[section].0.capitalizedString
         }
-        return self.cinema.keys[self.cinema.startIndex.advancedBy(section)].capitalizedString;
+        return self.cinema[section].0.capitalizedString;
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (searchController.active && searchController.searchBar.text != "") {
-            return self.cinemaSearchResult[self.cinemaSearchResult.startIndex.advancedBy(section)].1.count
+            
+            return self.cinemaSearchResult[section].1.count
         }
-        return self.cinema[self.cinema.startIndex.advancedBy(section)].1.count
+        return self.cinema[section].1.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = indexPath.row
-        print("Row: \(row)")
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    func get_key_of_index(index:Int) -> String
+    func get_list(cinema:Array<Cinema>) -> [(String, Array<Cinema>)]
     {
-        if (searchController.active && searchController.searchBar.text != "") {
-            return self.cinemaSearchResult.keys[self.cinemaSearchResult.startIndex.advancedBy(index)]
-        }
-        return self.cinema.keys[self.cinema.startIndex.advancedBy(index)]
-    }
-    
-    func get_dic(cinema:Array<Cinema>) -> Dictionary<String, Array<Cinema>>
-    {
-        var mySet : Dictionary<String,Array<Cinema>> = Dictionary<String,Array<Cinema>>()
-        for (_,value) in cinema.sort({ $0.description < $1.description }).enumerate() {
-            if (mySet[value.description] == nil) {
-                mySet[value.description] = []
+        var mySet : [(String, Array<Cinema>)] = [(String, Array<Cinema>)]()
+        for (_,value) in cinema.enumerate() {
+            let idSection = getIndexOfSection(value.description, list: mySet)
+            if idSection == -1 {
+                mySet.append((value.description, [value]));
+            } else {
+            mySet[idSection].1.append(value)
             }
-            mySet[value.description]?.append(value)
         }
-        
         return mySet
     }
+    
+    func getIndexOfSection(section:String, list:[(String, Array<Cinema>)]) -> Int {
+        for (index, value) in list.enumerate() {
+            
+            if (value.0 == section) {
+                return index;
+            }
+        }
+        return -1
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let section = get_key_of_index(indexPath.section)
-        if  searchController.active && searchController.searchBar.text != "" {
-            var c:Array<Cinema> = self.cinemaSearchResult[section]!
-            cell.textLabel!.text = c[indexPath.row].name.capitalizedString
-            cell.detailTextLabel!.text = c[indexPath.row].adresse.capitalizedString
-        } else{
-            var c:Array<Cinema> = self.cinema[section]!
-            cell.textLabel!.text = c[indexPath.row].name.capitalizedString
-            cell.detailTextLabel!.text = c[indexPath.row].adresse.capitalizedString
-        }
+        let c:Array<Cinema> = (searchController.active && searchController.searchBar.text != "") ? self.cinemaSearchResult[indexPath.section].1 :  self.cinema[indexPath.section].1
         
+        cell.textLabel!.text = c[indexPath.row].name.capitalizedString
+        cell.detailTextLabel!.text = c[indexPath.row].adresse.capitalizedString
         return cell;
     }
     
     func filterContentForSearchText(searchText: String) {
         self.cinemaSearchResult = self.cinema;
-        for (_,key) in self.cinema.keys.enumerate() {
-            self.cinemaSearchResult[key] = self.cinemaSearchResult[key]!.filter({(aSpecies: Cinema) -> Bool in
+        for (index,_) in self.cinema.enumerate() {
+            self.cinemaSearchResult[index].1 = self.cinemaSearchResult[index].1.filter({(aSpecies: Cinema) -> Bool in
                 return aSpecies.name.lowercaseString.rangeOfString(searchText.lowercaseString) != nil ||
                     aSpecies.description.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
             });
@@ -124,8 +120,7 @@ class CinemaController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let secondViewController = segue.destinationViewController as! RoomsController
-            let section = self.get_key_of_index(indexPath.section)
-            secondViewController.detailCinema = self.cinema[section]![indexPath.row]
+            secondViewController.detailCinema = self.cinema[indexPath.section].1[indexPath.row]
             
         }
     }

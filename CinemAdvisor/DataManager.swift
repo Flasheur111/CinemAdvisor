@@ -59,7 +59,6 @@
                             cinemas.append(c)
                         }
                     }
-                    cinemas = cinemas.sort { $0.description.compare($1.description) == .OrderedDescending }
                     completion(error: nil, cinema: cinemas);
                 }
             } catch _ {}
