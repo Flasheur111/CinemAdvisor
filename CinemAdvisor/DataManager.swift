@@ -13,7 +13,7 @@
     static let server = "http://localhost:3000"
     
     // Cinemas Routes
-    static let get_cinemas_url = "/cinema"
+    static let get_cinemas_url = "/cinema/list"
     
     // Rooms Routes
     static let add_room_url = "/room/add/"
@@ -42,19 +42,22 @@
                 if let get_json:AnyObject? = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers){
                     
                     let jsonResult  =  get_json as! NSMutableArray
+                    
                     for entry in jsonResult {
-                        let c:Cinema = Cinema(
-                            id: entry["noauto"] as! Int,
-                            name: entry["enseigne"] as! String,
-                            description: entry["ville"] as! String,
-                            cp:entry["dep"] as! Int,
-                            longitude: entry["lng"] as! Double,
-                            latitude: entry["lat"] as! Double,
-                            adresse: entry["adr"] as! String)
-                        if (c.description.containsString("PARIS")){
+                        var defaultCity:String = (entry["ville"] as! String)
+                        if (defaultCity.containsString("PARIS"))
+                        {
+                            defaultCity = defaultCity.substringWithRange(Range<String.Index>(start: defaultCity.startIndex.advancedBy(6), end: defaultCity.endIndex.advancedBy(-2)))
+                            let c:Cinema = Cinema(
+                                id: entry["noauto"] as! Int,
+                                name: (entry["enseigne"] as! String),
+                                description: defaultCity + "e arrondissement de Paris",
+                                cp:entry["dep"] as! Int,
+                                longitude: entry["lng"] as! Double,
+                                latitude: entry["lat"] as! Double,
+                                adresse: entry["adr"] as! String)
                             cinemas.append(c)
                         }
-                        
                     }
                     cinemas = cinemas.sort { $0.description.compare($1.description) == .OrderedDescending }
                     completion(error: nil, cinema: cinemas);
@@ -159,10 +162,11 @@
         jsonQuery.resume();
     }
     
-    static func AddComment(cinemaId: Int, roomId: String, comment: String, user: String, rate: String) {
+    static func AddComment(cinemaId: Int, roomId: String, comment: String, user: String, rate: String, completion: () -> Void) {
         var fullUrl: String = server + add_comment_url + String(cinemaId) + "/" + String(roomId) +  "/";
-        fullUrl += String(comment) + "/" + String(user) + "/" + rate
-        
+        fullUrl += String(comment).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())! + "/"
+        fullUrl += String(user).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())! + "/"
+        fullUrl += rate
         let url = NSURL(string: fullUrl)!
         let urlSession = NSURLSession.sharedSession()
         
@@ -170,6 +174,7 @@
             if (error != nil) {
                 print(error!.localizedDescription)
             }
+            completion()
         });
         
         jsonQuery.resume();

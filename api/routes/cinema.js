@@ -8,7 +8,7 @@ var router = express.Router();
 
 
 /* GET cinema listing. */
-router.get('/', function (req, res, next) {
+router.get('/list', function (req, res, next) {
     MongoClient.connect(url, function (err, db) {
         var collection = db.collection('cinema');
         collection.find().count(function (err, count) {
