@@ -24,8 +24,7 @@ class RoomsController: UITableViewController {
     }
     
     func setRooms(error: String?, rooms: Array<Room>?) -> Void {
-        if (error != nil)
-        {
+        if (error != nil) {
             ErrorAlert.CannotConnect(self);
         }
         else
@@ -60,6 +59,8 @@ class RoomsController: UITableViewController {
     func appendRoom(room: Room?) -> Void {
         dispatch_async(dispatch_get_main_queue(), {
             if (room != nil) {
+                self.tableView.backgroundView = nil
+                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
                 self.rooms.append(room!)
                 self.tableView.reloadData()
             }
