@@ -13,6 +13,9 @@ class AddCommentController: UIViewController, FloatRatingViewDelegate {
     @IBOutlet var cinema: UITextField!
     @IBOutlet var room: UITextField!
     
+    var cinemaId: NSInteger!
+    var roomId: String!
+    
     @IBOutlet var comment: UITextField!
     @IBOutlet var user: UITextField!
     
@@ -28,7 +31,7 @@ class AddCommentController: UIViewController, FloatRatingViewDelegate {
         self.cinema.text = cinemaModel!.name;
         self.room.text = roomModel!.name;
     }
-
+    
 
     func floatRatingView(ratingView: FloatRatingView, isUpdating rating:Float) {
         self.liveRate.text = NSString(format: "%.2f", self.floatRatingView.rating) as String
@@ -37,5 +40,22 @@ class AddCommentController: UIViewController, FloatRatingViewDelegate {
     func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
         self.liveRate.text = NSString(format: "%.2f", self.floatRatingView.rating) as String
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if let ident = identifier {
+            if ident == "unwindToSegue" {
+                if (self.user.text == "")
+                {
+                    ErrorAlert.FieldsNotFilled(self)
+                    return false
+                }
+                else {
+                    return true
+                }
+            }
+        }
+        return true
+    }
+    
 
 }

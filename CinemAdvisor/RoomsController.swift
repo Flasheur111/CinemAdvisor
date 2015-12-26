@@ -31,9 +31,19 @@ class RoomsController: UITableViewController {
         else
         {
             self.rooms = rooms!
-            
             dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
+                if self.rooms.count <= 0 {
+                    let noDataLabel = UILabel(frame: CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height))
+                    noDataLabel.numberOfLines = 3
+                    noDataLabel.text             = "Il n'y pas encore de salle ajoutée.\n\nSoit le premier à en ajouter une !"
+                    noDataLabel.textColor        = UIColor.blackColor()
+                    noDataLabel.textAlignment = NSTextAlignment.Center
+                    self.tableView.backgroundView = noDataLabel
+                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+                }
+                else {
+                    self.tableView.reloadData()
+                }
             });
         }
     }

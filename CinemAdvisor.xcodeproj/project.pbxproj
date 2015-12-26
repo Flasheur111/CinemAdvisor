@@ -178,7 +178,7 @@
 				TargetAttributes = {
 					0FC0ABCE1C20EE6D00BEC47F = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = WNU28V33T5;
+						DevelopmentTeam = THJT739PSY;
 					};
 				};
 			};
@@ -347,7 +347,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CinemAdvisor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.epita.CinemAdvisor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.epita.CinemAdvisortootto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -362,7 +362,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CinemAdvisor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.epita.CinemAdvisor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.epita.CinemAdvisortootto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

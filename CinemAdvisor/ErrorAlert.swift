@@ -17,4 +17,12 @@ class ErrorAlert {
         alertController.addAction(yesAction)
         view.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    static func FieldsNotFilled(view:UIViewController)
+    {
+        let alertController = UIAlertController(title: "Attention", message: "Il faut au moins renseigner votre pseudonyme.", preferredStyle: .Alert)
+        let yesAction = UIAlertAction(title: "Ça marche !", style: UIAlertActionStyle.Default, handler: nil)
+        alertController.addAction(yesAction)
+        view.presentViewController(alertController, animated: true, completion: nil)
+    }
 }

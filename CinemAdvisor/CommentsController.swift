@@ -75,6 +75,8 @@ class CommentsController: UITableViewController {
             let secondViewController = segue.destinationViewController as! AddCommentController
             secondViewController.cinemaModel = (self.cinema)!
             secondViewController.roomModel = (self.room)!
+            secondViewController.cinemaId = self.cinema?.id
+            secondViewController.roomId = self.room?.roomId
         }
     }
     
