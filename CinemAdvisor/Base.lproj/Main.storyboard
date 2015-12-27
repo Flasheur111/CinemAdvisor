@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Salles-->
+        <!--Rooms Controller-->
         <scene sceneID="z7B-Ul-v5h">
             <objects>
                 <tableViewController id="TJv-66-aES" customClass="RoomsController" customModule="CinemAdvisor" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,7 +69,7 @@
                             <outlet property="delegate" destination="TJv-66-aES" id="7Zl-hQ-B9h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Salles" id="k4l-30-IrS">
+                    <navigationItem key="navigationItem" id="k4l-30-IrS">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rbd-g1-vET">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -115,7 +115,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="TJv-66-aES" kind="show" id="34s-GR-VuS"/>
+                                    <segue destination="TJv-66-aES" kind="show" identifier="" id="34s-GR-VuS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -149,7 +149,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eJj-fn-NPQ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJj-fn-NPQ">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
                                     <outlet property="delegate" destination="0eE-hv-c3Q" id="RHk-MI-W0a"/>
@@ -167,6 +167,7 @@
                     <navigationItem key="navigationItem" id="EZr-7F-W0e"/>
                     <connections>
                         <outlet property="mapView" destination="eJj-fn-NPQ" id="ZX9-SM-MHb"/>
+                        <segue destination="TJv-66-aES" kind="show" identifier="goToCinemaDetail" id="Hw8-Lh-1bP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNq-rq-aGV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,5 +505,8 @@
         <image name="StarEmpty" width="64" height="64"/>
         <image name="StarFull" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Hw8-Lh-1bP"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

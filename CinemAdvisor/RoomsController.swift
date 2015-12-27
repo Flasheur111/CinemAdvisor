@@ -11,6 +11,7 @@ import UIKit
 class RoomsController: UITableViewController {
     var rooms: Array<Room> = Array<Room>()
     var cinema: Cinema? = nil
+    @IBOutlet var cinemaName: String?
     
     var detailCinema: Cinema? {
         didSet {
@@ -20,6 +21,16 @@ class RoomsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let titleCinema = detailCinema {
+            self.title = "Salles : \(titleCinema.name.capitalizedString)"
+        }
+        let tlabel = UILabel(frame: (CGRectMake(0, 0, 200,40)))
+        tlabel.text=self.navigationItem.title;
+        tlabel.textColor = UIColor.whiteColor()
+        tlabel.font = UIFont(name: "Helvetica-Bold", size:  30.0)
+        tlabel.backgroundColor = UIColor.clearColor()
+        tlabel.adjustsFontSizeToFitWidth=true;
+        self.navigationItem.titleView=tlabel;
         DataManager.GetRoomsByCinemaId((self.detailCinema?.id)!, completion: setRooms)
     }
     
@@ -37,8 +48,8 @@ class RoomsController: UITableViewController {
                     noDataLabel.text             = "Il n'y pas encore de salle ajoutée.\n\nSoit le premier à en ajouter une !"
                     noDataLabel.textColor        = UIColor.blackColor()
                     noDataLabel.textAlignment = NSTextAlignment.Center
-                    self.tableView.backgroundView = noDataLabel
                     self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+                    self.tableView.backgroundView = noDataLabel
                 }
                 else {
                     self.tableView.reloadData()
