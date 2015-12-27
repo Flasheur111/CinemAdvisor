@@ -48,6 +48,7 @@ class CinemaController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if (searchController.active && searchController.searchBar.text != "") {
+            print (cinemaSearchResult.count)
             return cinemaSearchResult.count
         }
         return cinema.count
@@ -108,12 +109,18 @@ class CinemaController: UITableViewController {
     }
     
     func filterContentForSearchText(searchText: String) {
-        self.cinemaSearchResult = self.cinema;
+        var tmpCinemaSearchResult = self.cinema;
+        self.cinemaSearchResult = [(String, Array<Cinema>)]()
         for (index,_) in self.cinema.enumerate() {
-            self.cinemaSearchResult[index].1 = self.cinemaSearchResult[index].1.filter({(aSpecies: Cinema) -> Bool in
+            let resSearch = tmpCinemaSearchResult[index].1.filter({(aSpecies: Cinema) -> Bool in
                 return aSpecies.name.lowercaseString.rangeOfString(searchText.lowercaseString) != nil ||
-                    aSpecies.description.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
-            });
+                    aSpecies.description.lowercaseString.rangeOfString(searchText.lowercaseString) != nil})
+            if (resSearch.count > 0)
+            {
+                let result = (tmpCinemaSearchResult[index].0, resSearch)
+                self.cinemaSearchResult.append(result)
+            }
+
         }
         tableView.reloadData()
     }
