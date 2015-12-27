@@ -25,6 +25,7 @@
 		0FC4309C1C2C7C7C00EC0BD8 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC4309B1C2C7C7C00EC0BD8 /* ErrorAlert.swift */; };
 		34CAF7471C2F10C000B3DF9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CAF7461C2F10C000B3DF9C /* Images.xcassets */; };
 		910E50421C270A1100CBA1B2 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E50411C270A1100CBA1B2 /* Room.swift */; };
+		CB34C9C21C30954E00EE4508 /* CinemaCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34C9C11C30954E00EE4508 /* CinemaCellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0FC4309B1C2C7C7C00EC0BD8 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		34CAF7461C2F10C000B3DF9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		910E50411C270A1100CBA1B2 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		CB34C9C11C30954E00EE4508 /* CinemaCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,19 +63,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FB7C70A1C28501F00B453CF /* ViewController */ = {
+		0FB7C70A1C28501F00B453CF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0FA5A2E81C2A02E900BF9E63 /* CommentCellController.swift */,
 				0FB7C7021C26345700B453CF /* RoomsController.swift */,
 				0FB7C7061C264E8100B453CF /* CommentsController.swift */,
 				0FB7C7041C264C1500B453CF /* AddRoomController.swift */,
 				0FC0ABD41C20EE6D00BEC47F /* CinemaController.swift */,
 				0F2E88CD1C258D1900A8F059 /* MapController.swift */,
 				0FB7C7151C28CF5700B453CF /* AddCommentController.swift */,
-				0FC430991C2C6CF000EC0BD8 /* RoomCellController.swift */,
 			);
-			name = ViewController;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		0FB7C70B1C28503700B453CF /* Model */ = {
@@ -131,16 +131,27 @@
 		0FC0ABD11C20EE6D00BEC47F /* CinemAdvisor */ = {
 			isa = PBXGroup;
 			children = (
+				CB34C9C01C3094FB00EE4508 /* CustomCell */,
 				0FB7C70E1C28508800B453CF /* Tools */,
 				0FB7C70D1C28507900B453CF /* View */,
 				0FB7C70C1C28504D00B453CF /* DataManager */,
 				0FB7C70B1C28503700B453CF /* Model */,
-				0FB7C70A1C28501F00B453CF /* ViewController */,
+				0FB7C70A1C28501F00B453CF /* Controller */,
 				0FC0ABD21C20EE6D00BEC47F /* AppDelegate.swift */,
 				0FC0ABE11C20EE6D00BEC47F /* Info.plist */,
 				34CAF7461C2F10C000B3DF9C /* Images.xcassets */,
 			);
 			path = CinemAdvisor;
+			sourceTree = "<group>";
+		};
+		CB34C9C01C3094FB00EE4508 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FA5A2E81C2A02E900BF9E63 /* CommentCellController.swift */,
+				0FC430991C2C6CF000EC0BD8 /* RoomCellController.swift */,
+				CB34C9C11C30954E00EE4508 /* CinemaCellController.swift */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +235,7 @@
 				0FA5A2E91C2A02E900BF9E63 /* CommentCellController.swift in Sources */,
 				0F2E88C81C244C5600A8F059 /* Cinema.swift in Sources */,
 				0FC0ABD51C20EE6D00BEC47F /* CinemaController.swift in Sources */,
+				CB34C9C21C30954E00EE4508 /* CinemaCellController.swift in Sources */,
 				0F2E88C61C244B3700A8F059 /* DataManager.swift in Sources */,
 				0F2E88CE1C258D1900A8F059 /* MapController.swift in Sources */,
 				0FB7C7031C26345700B453CF /* RoomsController.swift in Sources */,

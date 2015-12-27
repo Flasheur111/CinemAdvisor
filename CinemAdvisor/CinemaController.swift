@@ -100,11 +100,12 @@ class CinemaController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CinemaCellController
         let c:Array<Cinema> = (searchController.active && searchController.searchBar.text != "") ? self.cinemaSearchResult[indexPath.section].1 :  self.cinema[indexPath.section].1
         
-        cell.textLabel!.text = c[indexPath.row].name.capitalizedString
-        cell.detailTextLabel!.text = c[indexPath.row].adresse.capitalizedString
+        cell.title!.text = c[indexPath.row].name.capitalizedString
+        cell.subtitle!.text = c[indexPath.row].adresse.capitalizedString
+        cell.floatRatingView!.rating = c[indexPath.row].star
         return cell;
     }
     

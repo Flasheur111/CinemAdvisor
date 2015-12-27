@@ -2,3 +2,4 @@
 */xcuserdata/*
 *.xcuserdata
 .DS_Store
+*/project.xcworkspace/*

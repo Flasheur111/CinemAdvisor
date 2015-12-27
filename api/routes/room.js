@@ -1,4 +1,5 @@
 var express = require('express');
+var async = require('async');
 var MongoClient = require('mongodb').MongoClient;
 var config = require('../config')
 var url = config.url_api;
@@ -49,11 +50,20 @@ router.get('/list/:idcinema', function (req, res, next) {
         res.send({"error": "arguments"});
         return;
     }
-
-    stats.getAverageComments(id, function(full) {
+    async.waterfall([
+        function (callback) {
+            MongoClient.connect(url, function (err, db) {
+                callback(err, db);
+            });
+        },
+        function (db, callback) {
+            stats.getAverageComments(id, db, function (full) {
+                callback(null, db, full);
+            });
+        }], function (err, db, full) {
         res.send(full);
-    })
-
+        db.close();
+    });
 });
 
 

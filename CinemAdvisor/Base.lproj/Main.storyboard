@@ -89,32 +89,62 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="VhL-YU-GCb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="Cq4-VM-VXd" detailTextLabel="ctw-BB-7SI" style="IBUITableViewCellStyleSubtitle" id="Yv0-ct-w4s">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="Yv0-ct-w4s" customClass="CinemaCellController" customModule="CinemAdvisor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yv0-ct-w4s" id="eRT-hl-KJe">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cq4-VM-VXd">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ctw-BB-7SI">
-                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1g-1h-cCM">
+                                            <rect key="frame" x="8" y="27" width="551" height="13.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPd-9v-i7v">
+                                            <rect key="frame" x="8" y="6" width="462" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g63-z4-ogB" customClass="FloatRatingView" customModule="CinemAdvisor" customModuleProvider="target">
+                                            <rect key="frame" x="478" y="8" width="81" height="18.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="81" id="M3a-RZ-jCc"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nPd-9v-i7v" firstAttribute="leading" secondItem="eRT-hl-KJe" secondAttribute="leadingMargin" id="Qee-KA-8a3"/>
+                                        <constraint firstItem="S1g-1h-cCM" firstAttribute="top" secondItem="nPd-9v-i7v" secondAttribute="bottom" constant="1.5" id="T9k-FA-GPF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="S1g-1h-cCM" secondAttribute="bottom" constant="-5" id="Z5X-e9-yfg"/>
+                                        <constraint firstItem="nPd-9v-i7v" firstAttribute="top" secondItem="eRT-hl-KJe" secondAttribute="topMargin" constant="-2" id="ZKa-7k-oU1"/>
+                                        <constraint firstItem="S1g-1h-cCM" firstAttribute="trailing" secondItem="eRT-hl-KJe" secondAttribute="trailingMargin" id="cCP-iG-gPY"/>
+                                        <constraint firstItem="g63-z4-ogB" firstAttribute="trailing" secondItem="eRT-hl-KJe" secondAttribute="trailingMargin" id="mfC-nP-zag"/>
+                                        <constraint firstItem="S1g-1h-cCM" firstAttribute="leading" secondItem="eRT-hl-KJe" secondAttribute="leadingMargin" id="pMx-VL-pY1"/>
+                                        <constraint firstItem="g63-z4-ogB" firstAttribute="top" secondItem="eRT-hl-KJe" secondAttribute="topMargin" id="t2d-ye-pzO"/>
+                                        <constraint firstItem="g63-z4-ogB" firstAttribute="leading" secondItem="nPd-9v-i7v" secondAttribute="trailing" constant="8" id="vPu-xg-J1j"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="floatRatingView" destination="g63-z4-ogB" id="czz-a5-BOP"/>
+                                    <outlet property="subtitle" destination="S1g-1h-cCM" id="d7h-dS-Zjk"/>
+                                    <outlet property="title" destination="nPd-9v-i7v" id="N1g-6p-sfd"/>
                                     <segue destination="TJv-66-aES" kind="show" identifier="" id="34s-GR-VuS"/>
                                 </connections>
                             </tableViewCell>

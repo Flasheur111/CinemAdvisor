@@ -55,7 +55,8 @@
                                 cp:entry["dep"] as! Int,
                                 longitude: entry["lng"] as! Double,
                                 latitude: entry["lat"] as! Double,
-                                adresse: entry["adr"] as! String)
+                                adresse: entry["adr"] as! String,
+                                star: (entry["avg"] as! NSNumber).floatValue)
                             cinemas.append(c)
                         }
                     }
