@@ -22,7 +22,21 @@ class CommentsController: UITableViewController {
         self.comments = comments;
         
         dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
+            if self.comments.count <= 0 {
+                let noDataLabel = UILabel(frame: CGRectMake(0, 0, self.tableView.bounds.size.width, self.tableView.bounds.size.height))
+                noDataLabel.numberOfLines = 3
+                noDataLabel.text             = "Il n'y pas encore de note ajoutée.\n\nSoit le premier à en ajouter une !"
+                noDataLabel.textColor        = UIColor.blackColor()
+                noDataLabel.textAlignment = NSTextAlignment.Center
+                self.tableView.backgroundView = noDataLabel
+                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            }
+            else
+            {
+                self.tableView.backgroundView = nil
+                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+                self.tableView.reloadData()
+            }
         });
     }
     
