@@ -128,7 +128,12 @@ class CinemaController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = tableView.indexPathForSelectedRow {
             let secondViewController = segue.destinationViewController as! RoomsController
-            secondViewController.detailCinema = self.cinema[indexPath.section].1[indexPath.row]
+            if (searchController.active && searchController.searchBar.text != "") {
+                secondViewController.detailCinema = self.cinemaSearchResult[indexPath.section].1[indexPath.row]
+            }
+            else {
+                secondViewController.detailCinema = self.cinema[indexPath.section].1[indexPath.row]
+            }
             
         }
     }

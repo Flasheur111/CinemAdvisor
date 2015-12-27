@@ -1,3 +1,4 @@
 .idea
 */xcuserdata/*
+*.xcuserdata
 .DS_Store
