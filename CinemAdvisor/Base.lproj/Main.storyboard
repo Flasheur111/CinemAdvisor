@@ -70,6 +70,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="k4l-30-IrS">
+                        <barButtonItem key="leftBarButtonItem" tag="1" title="Retour" id="jaM-8n-SDC">
+                            <connections>
+                                <segue destination="xLi-Nl-G8N" kind="unwind" unwindAction="unwindToSegue:" id="Ue9-g4-znc"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rbd-g1-vET">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -79,6 +84,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sx-RX-HS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xLi-Nl-G8N" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="694" y="1248"/>
         </scene>
@@ -238,7 +244,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter une salle" id="Vcx-v9-kKZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="p8Q-F6-obz">
+                        <barButtonItem key="leftBarButtonItem" tag="1" title="Retour" id="bwg-fJ-XUf">
+                            <connections>
+                                <segue destination="488-lu-d6Q" kind="unwind" unwindAction="unwindToSegue:" id="1aD-7J-9XE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="2" systemItem="done" id="p8Q-F6-obz">
                             <connections>
                                 <segue destination="488-lu-d6Q" kind="unwind" identifier="afterRoomAdd" unwindAction="unwindToSegue:" id="12N-lp-xCX"/>
                             </connections>
@@ -376,14 +387,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ajouter un commentaire" id="eMe-kv-OTM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="m1z-yz-0qw">
+                        <barButtonItem key="leftBarButtonItem" tag="1" systemItem="cancel" id="fgt-2Y-5Ro">
+                            <connections>
+                                <segue destination="rYU-bt-zno" kind="unwind" unwindAction="unwindToSegue:" id="y7J-ub-Lnx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="2" systemItem="done" id="m1z-yz-0qw">
                             <connections>
                                 <segue destination="rYU-bt-zno" kind="unwind" identifier="unwindToSegue" unwindAction="unwindToSegue:" id="caW-Jz-Gz7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addAction" destination="m1z-yz-0qw" id="NZJ-Q2-FID"/>
                         <outlet property="cinema" destination="50x-45-uLF" id="3LV-Xn-ZvO"/>
                         <outlet property="comment" destination="9r9-4j-mbh" id="yIf-Nh-LIv"/>
                         <outlet property="floatRatingView" destination="q6Z-eO-m17" id="GJz-Tc-z7J"/>
@@ -497,7 +512,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Commentaires" id="KNj-Hv-nlF">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hSq-oB-v3d">
+                        <barButtonItem key="leftBarButtonItem" tag="1" title="Retour" id="Msw-cH-OFl">
+                            <connections>
+                                <segue destination="JXL-Dh-aUQ" kind="unwind" unwindAction="unwindToSegue:" id="ZTr-Pr-7Vc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" tag="2" systemItem="add" id="hSq-oB-v3d">
                             <connections>
                                 <segue destination="nvA-6f-3ec" kind="show" id="Kdk-Ax-gcI"/>
                             </connections>
@@ -505,8 +525,9 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAh-51-tqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JXL-Dh-aUQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="694" y="1969"/>
+            <point key="canvasLocation" x="694" y="2087"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FoH-Sl-WVr">

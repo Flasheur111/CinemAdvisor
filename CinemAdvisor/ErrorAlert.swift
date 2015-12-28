@@ -25,4 +25,20 @@ class ErrorAlert {
         alertController.addAction(yesAction)
         view.presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    static func CannotAddRoom(view:UIViewController, error:String)
+    {
+        let alertController = UIAlertController(title: "Erreur", message: error, preferredStyle: .Alert)
+        let yesAction = UIAlertAction(title: "OK", style: .Default, handler: { _ in})
+        alertController.addAction(yesAction)
+        view.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    static func CannotAddComment(view:UIViewController, error: String)
+    {
+        let alertController = UIAlertController(title: "Erreur", message: error, preferredStyle: .Alert)
+        let yesAction = UIAlertAction(title: "OK", style: .Default, handler: { _ in})
+        alertController.addAction(yesAction)
+        view.presentViewController(alertController, animated: true, completion: nil)
+    }
 }

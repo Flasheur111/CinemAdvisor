@@ -9,8 +9,10 @@
  import UIKit;
  
  class DataManager {
+    // Local url
+    //static let server = "http://localhost:3000"
     // Remote url
-    static let server = "http://localhost:3000"
+    static let server = "http://ns358737.ip-91-121-153.eu:32000"
     
     // Cinemas Routes
     static let get_cinemas_url = "/cinema/list"
@@ -97,8 +99,7 @@
         jsonQuery.resume();
     }
     
-    static func AddRoom(cinemaId: Int, roomName: String, completion: ((room: Room?) -> Void)) {
-        var room:Room? = nil
+    static func AddRoom(cinemaId: Int, roomName: String, completion: ((error: String?) -> Void)) {
         let encodedRoomName = roomName.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
         let fullUrl: String = server + add_room_url + String(cinemaId) + "/" + encodedRoomName!
         let url = NSURL(string: fullUrl)!
@@ -106,21 +107,11 @@
         
         let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
             if (error != nil) {
-                print(error!.localizedDescription)
+                completion(error: error?.description)
+                return;
             }
+            completion(error: nil);
             
-            do
-            {
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                if (jsonResult["error"] as! String == "ok") {
-                    room = Room(roomId: "", name: jsonResult["inserted"]!["roomname"] as! String, cinemaId: (jsonResult["inserted"]!["idcinema"] as! NSString).integerValue, grade: 0)
-                    completion(room: room!)
-                }
-                else {
-                    print("Error adding room")
-                    completion(room: nil)
-                }
-            } catch _ {}
         });
         
         jsonQuery.resume();
@@ -162,7 +153,7 @@
         jsonQuery.resume();
     }
     
-    static func AddComment(cinemaId: Int, roomId: String, comment: String, user: String, rate: String, completion: () -> Void) {
+    static func AddComment(cinemaId: Int, roomId: String, comment: String, user: String, rate: String, completion: (error: String?) -> Void) {
         var fullUrl: String = server + add_comment_url + String(cinemaId) + "/" + String(roomId) +  "/";
         fullUrl += String(comment).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())! + "/"
         fullUrl += String(user).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())! + "/"
@@ -172,9 +163,10 @@
         
         let jsonQuery = urlSession.dataTaskWithURL(url, completionHandler: { data, response, error -> Void in
             if (error != nil) {
-                print(error!.localizedDescription)
+                completion(error: error?.description);
+                return;
             }
-            completion()
+            completion(error: nil)
         });
         
         jsonQuery.resume();

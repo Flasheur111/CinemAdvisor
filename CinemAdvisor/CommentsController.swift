@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentController: UITableViewController {
+class CommentsController: UITableViewController {
     var comments: Array<Comment> = Array<Comment>()
     var cinema: Cinema? = nil
     

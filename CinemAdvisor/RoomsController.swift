@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoomController: UITableViewController {
+class RoomsController: UITableViewController {
     var rooms: Array<Room> = Array<Room>()
     var cinema: Cinema? = nil
     @IBOutlet var cinemaName: String?
@@ -97,7 +97,7 @@ class RoomController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = tableView.indexPathForSelectedRow {
-            let secondViewController = segue.destinationViewController as! CommentController
+            let secondViewController = segue.destinationViewController as! CommentsController
             secondViewController.cinema = self.cinema;
             secondViewController.room = self.rooms[indexPath.row];
         }

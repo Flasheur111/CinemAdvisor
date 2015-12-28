@@ -18,13 +18,13 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.stopUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
         var currentCoord = locationManager.location?.coordinate
         
         if (currentCoord == nil)
