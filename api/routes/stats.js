@@ -61,6 +61,7 @@ exports.getAverageCinema = function (db, cb) {
             },
             function (document, callback) {
                 var full = [];
+
                 async.forEach(document, function (doc) {
                     stats.getAverageComments(doc.noauto.toString(), db, function (comments) {
                         var sum = 0;
@@ -72,7 +73,6 @@ exports.getAverageCinema = function (db, cb) {
                                     doc.avg = sum / comments.length;
                                     full.push(doc);
                                 }
-
                             }
                         }
                         else {
