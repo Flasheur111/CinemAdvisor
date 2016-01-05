@@ -10,9 +10,9 @@
  
  class DataManager {
     // Local url
-    static let server = "http://localhost:3000"
+    //static let server = "http://localhost:3000"
     // Remote url
-    //static let server = "http://ns358737.ip-91-121-153.eu:32000"
+    static let server = "http://ns358737.ip-91-121-153.eu:32000"
     
     // Cinemas Routes
     static let get_cinemas_url = "/cinema/list"
