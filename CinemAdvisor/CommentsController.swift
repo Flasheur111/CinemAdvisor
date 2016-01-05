@@ -16,7 +16,8 @@ class CommentsController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshComment()    }
+        self.refreshComment(nil);
+    }
     
     func setComments(comments:Array<Comment>) -> Void {
         self.comments = comments;
@@ -40,21 +41,13 @@ class CommentsController: UITableViewController {
         });
     }
     
-    
-    @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
-        let source: AddCommentController = segue.sourceViewController as! AddCommentController
-        DataManager.AddComment(
-            (self.cinema?.id)!,
-            roomId: (self.room?.roomId)!,
-            comment: source.comment.text!,
-            user: source.user.text!,
-            rate: String(source.floatRatingView.rating),
-            completion: refreshComment)
-        
-    }
-    
-    func refreshComment() {
-        DataManager.GetCommentsByCinemaRoomId((self.cinema?.id)!, roomId: (self.room?.roomId)!, completion: setComments)
+    func refreshComment(error: String?) {
+        if (error != nil) {
+            ErrorAlert.CannotAddComment(self, error: error!)
+        }
+        else {
+            DataManager.GetCommentsByCinemaRoomId((self.cinema?.id)!, roomId: (self.room?.roomId)!, completion: setComments)
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -85,14 +78,17 @@ class CommentsController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (self.cinema != nil && self.room != nil) {
-            let secondViewController = segue.destinationViewController as! AddCommentController
-            secondViewController.cinemaModel = (self.cinema)!
-            secondViewController.roomModel = (self.room)!
-            secondViewController.cinemaId = self.cinema?.id
-            secondViewController.roomId = self.room?.roomId
+        if (sender!.tag == 2)
+        {
+            if (self.cinema != nil && self.room != nil) {
+                let secondViewController = segue.destinationViewController as! AddCommentController
+                secondViewController.cinemaModel = (self.cinema)!
+                secondViewController.roomModel = (self.room)!
+            }
         }
     }
     
-    
+    @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
+        refreshComment(nil)
+    }
 }

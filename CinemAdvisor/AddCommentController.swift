@@ -13,13 +13,8 @@ class AddCommentController: UIViewController, FloatRatingViewDelegate {
     @IBOutlet var cinema: UITextField!
     @IBOutlet var room: UITextField!
     
-    var cinemaId: NSInteger!
-    var roomId: String!
-    
     @IBOutlet var comment: UITextField!
     @IBOutlet var user: UITextField!
-    
-    @IBOutlet var addAction: UIBarButtonItem!
     
     var cinemaModel:Cinema? = nil;
     var roomModel:Room? = nil;
@@ -32,11 +27,11 @@ class AddCommentController: UIViewController, FloatRatingViewDelegate {
         self.room.text = roomModel!.name;
     }
     
-
+    
     func floatRatingView(ratingView: FloatRatingView, isUpdating rating:Float) {
         self.liveRate.text = NSString(format: "%.2f", self.floatRatingView.rating) as String
     }
-
+    
     func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
         self.liveRate.text = NSString(format: "%.2f", self.floatRatingView.rating) as String
     }
@@ -57,5 +52,19 @@ class AddCommentController: UIViewController, FloatRatingViewDelegate {
         return true
     }
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (sender!.tag == 2)
+        {
+            DataManager.AddComment(
+                (self.cinemaModel?.id)!,
+                roomId: (self.roomModel?.roomId)!,
+                comment: self.comment.text!,
+                user: self.user.text!,
+                rate: String(self.floatRatingView.rating),
+                completion: (segue.destinationViewController as! CommentsController).refreshComment)
+        }
+        
+    }
+    
+    
 }

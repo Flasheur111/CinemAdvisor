@@ -31,7 +31,7 @@ class RoomsController: UITableViewController {
         tlabel.backgroundColor = UIColor.clearColor()
         tlabel.adjustsFontSizeToFitWidth=true;
         self.navigationItem.titleView=tlabel;
-        DataManager.GetRoomsByCinemaId((self.detailCinema?.id)!, completion: setRooms)
+        self.refreshRoom(nil)
     }
     
     func setRooms(error: String?, rooms: Array<Room>?) -> Void {
@@ -52,6 +52,8 @@ class RoomsController: UITableViewController {
                     self.tableView.backgroundView = noDataLabel
                 }
                 else {
+                    self.tableView.backgroundView = nil
+                    self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
                     self.tableView.reloadData()
                 }
             });
@@ -63,25 +65,15 @@ class RoomsController: UITableViewController {
     }
     
     @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
-        let source: AddRoomController = segue.sourceViewController as! AddRoomController
-        DataManager.AddRoom(self.cinema!.id, roomName: source.roomName, completion: appendRoom)
+        refreshRoom(nil);
     }
     
-    func appendRoom(room: Room?) -> Void {
-        dispatch_async(dispatch_get_main_queue(), {
-            if (room != nil) {
-                self.tableView.backgroundView = nil
-                self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-                self.rooms.append(room!)
-                self.tableView.reloadData()
-            }
-            else {
-                let alertController = UIAlertController(title: "Erreur", message: "Cette salle existe déjà !", preferredStyle: .Alert)
-                let yesAction = UIAlertAction(title: "OK", style: .Default, handler: { _ in})
-                alertController.addAction(yesAction)
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-        });
+    func refreshRoom(error: String?) -> Void {
+        if (error != nil) {
+            ErrorAlert.CannotAddRoom(self, error: error!);
+        } else {
+            DataManager.GetRoomsByCinemaId((self.detailCinema?.id)!, completion: setRooms)
+        }
     }
     
     

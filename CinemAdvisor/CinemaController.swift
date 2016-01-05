@@ -18,8 +18,7 @@ class CinemaController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DataManager.GetCinema(setCinemas)
-        
+        refreshCinemas()
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
@@ -40,6 +39,10 @@ class CinemaController: UITableViewController {
                 self.tableView.reloadData()
             });
         }
+    }
+    
+    func refreshCinemas() {
+        DataManager.GetCinema(setCinemas);
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,6 +140,10 @@ class CinemaController: UITableViewController {
             }
             
         }
+    }
+    
+    @IBAction func unwindToSegue (segue: UIStoryboardSegue) {
+        refreshCinemas()
     }
 }
 

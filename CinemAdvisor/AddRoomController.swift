@@ -9,16 +9,17 @@
 import UIKit
 
 class AddRoomController: UIViewController {
-
-    var roomName:String = "";
     @IBOutlet weak var roomNameTextField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.roomName = roomNameTextField.text!
+        if (sender!.tag == 2){
+            let source: RoomsController = segue.destinationViewController as! RoomsController
+            DataManager.AddRoom(source.cinema!.id, roomName: roomNameTextField.text!, completion: source.refreshRoom)
+        }
     }
 }
