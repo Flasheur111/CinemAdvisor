@@ -59,7 +59,7 @@ class CinemaController: UITableViewController {
             return self.cinemaSearchResult[section].0.capitalizedString
         }
         return self.cinema[section].0.capitalizedString;
-    }
+    }   
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (searchController.active && searchController.searchBar.text != "") {
