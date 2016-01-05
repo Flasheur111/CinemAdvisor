@@ -17,6 +17,12 @@ class CinemaController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let logoImage = UIImageView(frame: CGRect(x:0, y:0, width: (self.navigationController?.navigationBar.frame.width)!, height: ((self.navigationController?.navigationBar.frame.height)! - 10)))
+        logoImage.contentMode = .ScaleAspectFit
+        
+        let logo = UIImage(named: "cinemadvisor-logo-white.png")
+        logoImage.image = logo
+        self.navigationItem.titleView = logoImage
         
         refreshCinemas()
         searchController.searchResultsUpdater = self
@@ -124,7 +130,7 @@ class CinemaController: UITableViewController {
                 let result = (tmpCinemaSearchResult[index].0, resSearch)
                 self.cinemaSearchResult.append(result)
             }
-
+            
         }
         tableView.reloadData()
     }

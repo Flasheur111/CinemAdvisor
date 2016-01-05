@@ -27,10 +27,11 @@ class RoomsController: UITableViewController {
         let tlabel = UILabel(frame: (CGRectMake(0, 0, 200,40)))
         tlabel.text=self.navigationItem.title;
         tlabel.textColor = UIColor.whiteColor()
-        tlabel.font = UIFont(name: "Helvetica-Bold", size:  30.0)
+        tlabel.font = UIFont(name: "Helvetica-Bold", size:  15.0)
         tlabel.backgroundColor = UIColor.clearColor()
         tlabel.adjustsFontSizeToFitWidth=true;
         self.navigationItem.titleView=tlabel;
+        self.navigationItem.titleView?.center
         self.refreshRoom(nil)
     }
     

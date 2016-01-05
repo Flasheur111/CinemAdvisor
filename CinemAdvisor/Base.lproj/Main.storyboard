@@ -160,7 +160,7 @@
                             <outlet property="delegate" destination="nmD-aC-GX6" id="oTf-4P-OMs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cinémas" id="U0p-LM-21x">
+                    <navigationItem key="navigationItem" id="U0p-LM-21x">
                         <barButtonItem key="rightBarButtonItem" title="Carte" id="mT8-WL-Pwr">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -537,7 +537,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RLa-so-tGV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.16298491379310345" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
