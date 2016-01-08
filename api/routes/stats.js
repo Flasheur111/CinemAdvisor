@@ -62,7 +62,7 @@ exports.getAverageCinema = function (db, cb) {
             function (document, callback) {
                 var full = [];
 
-                async.forEach(document, function (doc) {
+                async.forEach(document, function (doc, callback2) {
                     stats.getAverageComments(doc.noauto.toString(), db, function (comments) {
                         var sum = 0;
                         if (comments != null && comments.length > 0) {
@@ -72,24 +72,25 @@ exports.getAverageCinema = function (db, cb) {
                                 if (comments[comments.length - 1]._id == comments[i]._id) {
                                     doc.avg = sum / comments.length;
                                     full.push(doc);
+                                    callback2();
                                 }
                             }
                         }
                         else {
                             doc.avg = 0;
                             full.push(doc);
-                        }
-                        if (document[document.length - 1]._id == doc._id) {
-                            callback(null, full);
+                            callback2();
                         }
                     });
+                }, function (err) {
+                    callback(null, full);
                 });
             }
         ],
 
         function (err, full) {
-            var sorted = full.sort(function (a,b) {
-               return a.adrcdpostal - b.adrcdpostal;
+            var sorted = full.sort(function (a, b) {
+                return a.adrcdpostal - b.adrcdpostal;
             });
             cb(full);
         }
